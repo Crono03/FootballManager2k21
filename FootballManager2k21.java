@@ -3,6 +3,6 @@ public class Gay{
 
   stronzone;
   omega;
-	sesso;
+	sesso estremo;
 	int gay=1;
 }
