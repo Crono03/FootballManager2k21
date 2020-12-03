@@ -1,2 +1,4 @@
 import java.io.*;
-public class Gay{}
+public class Gay{
+	int gay=1;
+}
