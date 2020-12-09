@@ -2,8 +2,8 @@ import java.io.*;
 public class FootballManager2k21{
 
   private static void creaGiocator1(String Giocatori[]){
-    String[]Nomi={"Gianni","Pico","Moe","Dark","Gianni","Michele","Giacomo","Pakalu","Uvuvwevwevwe Onyetenyevwe Ugwemubwem","Prof","Tele","Pinzkeberg"};
-    String[]Cognomi={"Hamilton","Muro","Lester","Gang","Gianni","Misseri","Andreotti","Papito","Osas","Maggi","Fonino","Palma"};
+    String[]Nomi={"Carl","Bernardo","Joele","Gabe","William","Marco","'Ntuoni","Juanni","Sarpeni","Saro","Gregorio","Mariello","Salvatore","Sandro","Frode","Gianni","Moe","Dark","Michele","Pakalu","Pinzkeberg"};
+    String[]Cognomi={"Jordano","De Magistris","Cosmo","Froicio","Berlinguer","Boschetti","Dula","Scavoli","Bomba","Settebello","Laureantont","Battilamiera","Rollins","Egregio","Mazza","Pinorat","Hamilton","Gang","Gianni","Misseri","Andreotti","Papito","Osas","Maggi","Fonino"};
     int max=Nomi.length-1;
     int min=0;
     int range=max-min+1;
@@ -20,7 +20,7 @@ public class FootballManager2k21{
       for (int j=0 ;j<i ;j++ ) {
         String gae = Giocatori[j];
 
-        if ( (ciocatori.equals(gae) ) == true  ) {
+        if ( (ciocatori.equals(gae) )  ) {
           salcazzi=true ;
         }
       }
