@@ -2,8 +2,8 @@ import java.io.*;
 public class FootballManager2k21{
 
   private static void creaGiocator1(String Giocatori[]){
-    String[]Nomi={"Kobe","Michael","LeBron","James","Kawhi","Wilt","Stephen","Tim","Marco","Bill"};
-    String[]Cognomi={"Bryant","Jordan","James","Harden","Leonard","Chamberlain","Curry","Duncan","Belinelli","Russell"};
+    String[]Nomi={"Mariettu","Luke.Boy","Sean","TonyIlFantino","Guesus","AlexObesoNano","Daiso","Carolo","Marvin","EvilKann"};
+	  String[]Cognomi={"Picone","Johnson","Canadesi","Girelli","Picone2","Chamberlain","Hamilton","Kane","Cosimo","Russell"};
     int max=Nomi.length-1;
     int min=0;
     int range=max-min+1;
