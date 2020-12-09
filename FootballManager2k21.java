@@ -2,8 +2,8 @@ import java.io.*;
 public class FootballManager2k21{
 
   private static void creaGiocator1(String Giocatori[]){
-    String[]Nomi={"Mariettu","Luke.Boy","Sean","TonyIlFantino","Guesus","AlexObesoNano","Daiso","Carolo","Marvin","EvilKann"};
-	  String[]Cognomi={"Picone","Johnson","Canadesi","Girelli","Picone2","Chamberlain","Hamilton","Kane","Cosimo","Russell"};
+    String[]Nomi={"Lukabboloy","Sean","TonyFantino","Guesus","AlexObesoNano","Deiso","Carolo","Marvin","EvilKann","Carl","Bernardo","Joele","Gabe","William","Marco","'Ntuoni","Juanni","Sarpeni","Saro","Gregorio","Mariello","Salvatore","Sandro","Frode","Gianni","Moe","Dark","Michele","Pakalu","Pinzkeberg"};
+    String[]Cognomi={"Picone","Figliodijuanni","Canadesi","Girelli","Piconetu","Chamberlain","Kane","Cosimo","Russell","Jordano","De Magistris","Cosmo","Froicio","Berlinguer","Boschetti","Dula","Scavoli","Bomba","Settebello","Laureantont","Battilamiera","Rollins","Egregio","Mazza","Pinorat","Hamilton","Gang","Gianni","Misseri","Andreotti","Papito","Osas","Maggi","Fonino"};
     int max=Nomi.length-1;
     int min=0;
     int range=max-min+1;
@@ -20,7 +20,7 @@ public class FootballManager2k21{
       for (int j=0 ;j<i ;j++ ) {
         String gae = Giocatori[j];
 
-        if ( (ciocatori.equals(gae) ) == true  ) {
+        if ( (ciocatori.equals(gae) )  ) {
           salcazzi=true ;
         }
       }
