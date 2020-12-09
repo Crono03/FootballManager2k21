@@ -2,8 +2,8 @@ import java.io.*;
 public class FootballManager2k21{
 
   private static void creaGiocator1(String Giocatori[]){
-    String[]Nomi={"Kobe","Michael","LeBron","James","Kawhi","Wilt","Stephen","Tim","Marco","Bill"};
-    String[]Cognomi={"Bryant","Jordan","James","Harden","Leonard","Chamberlain","Curry","Duncan","Belinelli","Russell"};
+    String[]Nomi={"jester","Carl","Bernardo","Joele","joe","Gabe","William","Tim","Marco","francois","Antonio","Juan","pedro","Salpendula"};
+    String[]Cognomi={"Bressi","Jordano","Fox","De Magistris","Di Carli","Boston","Cosmo","Froio","Berlinguer","Russo","Boschetti"};
     int max=Nomi.length-1;
     int min=0;
     int range=max-min+1;
@@ -20,7 +20,7 @@ public class FootballManager2k21{
       for (int j=0 ;j<i ;j++ ) {
         String gae = Giocatori[j];
 
-        if ( (ciocatori.equals(gae) ) == true  ) {
+        if ( (ciocatori.equals(gae) )  ) {
           salcazzi=true ;
         }
       }
