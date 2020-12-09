@@ -9,21 +9,29 @@ public class FootballManager2k21{
     int range=max-min+1;
     int randNomi;
     int randCognomi;
-    boolean salcazzi=true;
+
     for (int i=0 ;i<Giocatori.length ;i++ ) {
+
+      boolean salcazzi=false;
       randNomi=(int)(Math.random() * range) + min;
       randCognomi=(int)(Math.random() * range) + min;
+      String ciocatori= Nomi[randNomi]+" "+Cognomi[randCognomi];
+
       for (int j=0 ;j<i ;j++ ) {
-        if (Nomi[randNomi]+" "+Cognomi[randCognomi]!=Giocatori[j]) {
-          salcazzi=false;
+        String gae = Giocatori[j];
+
+        if ( (ciocatori.equals(gae) ) == true  ) {
+          salcazzi=true ;
         }
       }
-      if (!salcazzi){
-        Giocatori[i]=Nomi[randNomi]+" "+Cognomi[randCognomi];
-        salcazzi=true;
+
+      if (salcazzi == false  ){
+        Giocatori[i]=ciocatori;
+      }else if (i>0)
+          i--;
       }
 
-    }
+
     for (int picone=0;picone<Giocatori.length;picone++){
       System.out.println(Giocatori[picone]);
     }
