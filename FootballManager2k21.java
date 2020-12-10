@@ -14,7 +14,7 @@ public class FootballManager2k21{
 
       boolean salcazzi=false;
       randNomi=(int)(Math.random() * range) + min;
-      randCognomi=(int)(Math.random() * range) + min;
+      randCognomi=(int)(Math.random() * range+4) + min;
       String ciocatori= Nomi[randNomi]+" "+Cognomi[randCognomi];
 
       for (int j=0 ;j<i ;j++ ) {
