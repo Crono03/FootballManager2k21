@@ -6,9 +6,6 @@ public class FootballManager2k21{
     final int nDifensori=30;
     final int nCentrocampisti=35;
     final int nAttaccanti=20;
-
-    
-
   }
 
   private static void creaGiocator1(String Giocatori[]){
