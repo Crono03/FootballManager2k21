@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.concurrent.*;
+import java.awt.*;
 
 public class FootballManager2k21{
 
@@ -19,16 +20,23 @@ public class FootballManager2k21{
 
     titoliDiTesta();
 
-    /*creaGiocator1(Giocatori);
+    creaGiocator1(Giocatori);
     creaStatistiche(Caratteristiche1, Caratteristiche2, Caratteristiche3);
 
-    System.out.println("Benvenuto in Football Manager 2k21 !!11!11!1!1!1!1!1!1!1!11!1!!1111!!!!!!!11!!!111!!!!!!!!!");
+    System.out.println("Benvenuto in Football Manager 2k21, la miglior simulazione calcistica della storia, non come quei nabbi di EA Sports ");
     System.out.println("");
-    System.out.println("");
-    System.out.println("");
-
+    System.out.println("Inserisci il tuo nome da allenatore:");
+    System.out.print("Dr.  ");
     nomeAllenatore=insString();
-    nomeSquadra=insString();*/
+    System.out.println("Ahhh, il famoso Allenatore "+nomeAllenatore+", bene! Adesso scegli il nome della squadra che dovrai formare");
+    nomeSquadra=insString();
+    System.out.println(" ");
+    System.out.println("|");
+    System.out.println("|");
+    System.out.println("|");
+    System.out.println("|");
+    System.out.println("|");
+    clearScreen();
 
   }
 
@@ -41,10 +49,7 @@ public class FootballManager2k21{
 
     }catch(Exception e){System.out.println(e);}
 
-    }
-
-
-
+  }
 
     public static void clearScreen() {
 
@@ -81,16 +86,30 @@ public class FootballManager2k21{
   public static String insString(){
 
       String nome=null;
-    try{
+      String conferma=null;
+      boolean correggiuto = false ;
 
-      InputStreamReader isr;
-      BufferedReader br;
-      isr = new InputStreamReader(System.in);
-      br = new BufferedReader(isr);
+    do{
 
-      nome = br.readLine();
+      try{
 
-    }catch(Exception e){System.out.println(e);}
+        InputStreamReader isr;
+        BufferedReader br;
+        isr = new InputStreamReader(System.in);
+        br = new BufferedReader(isr);
+
+        nome = br.readLine();
+
+        System.out.println("\t"+"\t"+"\t"+nome + " E' corretto ? Y/N (se non metti niente o sbagli so affari tuoi) " );
+
+        conferma = br.readLine();
+
+        if (conferma.equals("Y") || conferma.equals("y") )
+          correggiuto = true;
+
+      }catch(Exception e){System.out.println(e);}
+
+    }while(correggiuto == false);
 
     return nome;
     }
@@ -118,7 +137,7 @@ public class FootballManager2k21{
     }
   }
 
-  private static void creaGiocator1(String Giocatori[]){
+  public static void creaGiocator1(String Giocatori[]){
     String[]Nomi={"Lukabboloy","Sean","TonyFantino","Guesus","AlexObesoNano","Deiso","Carolo","Marvin","EvilKann","Carl","Bernardo","Joele","Gabe","William","Marco","'Ntuoni","Juanni","Sarpeni","Saro","Gregorio","Mariello","Salvatore","Sandro","Frode","Gianni","Moe","Dark","Michele","Pakalu","Pinzkeberg"};
     String[]Cognomi={"Picone","Figliodijuanni","Canadesi","Girelli","Piconetu","Chamberlain","Kane","Cosimo","Russell","Jordano","De Magistris","Cosmo","Froicio","Berlinguer","Boschetti","Dula","Scavoli","Bomba","Settebello","Laureantont","Battilamiera","Rollins","Egregio","Mazza","Pinorat","Hamilton","Gang","Gianni","Misseri","Andreotti","Papito","Osas","Maggi","Fonino"};
     int randNomi;
@@ -143,11 +162,7 @@ public class FootballManager2k21{
         Giocatori[i]=ciocatori;
       }else if (i>0)
           i--;
-      }
-
-
-    for (int picone=0;picone<Giocatori.length;picone++){
-      System.out.println(Giocatori[picone]);
     }
+
   }
 }
