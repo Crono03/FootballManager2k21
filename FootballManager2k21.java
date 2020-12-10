@@ -12,7 +12,7 @@ public class FootballManager2k21{
 
     for (int i=0 ;i<Giocatori.length ;i++ ) {
 
-      boolean salcazzi=false;
+      boolean controlloNomi=false;
       randNomi=(int)(Math.random() * range) + min;
       randCognomi=(int)(Math.random() * range+4) + min;
       String ciocatori= Nomi[randNomi]+" "+Cognomi[randCognomi];
@@ -21,11 +21,11 @@ public class FootballManager2k21{
         String gae = Giocatori[j];
 
         if ( (ciocatori.equals(gae) )  ) {
-          salcazzi=true ;
+          controlloNomi=true ;
         }
       }
 
-      if (salcazzi == false  ){
+      if (controlloNomi == false  ){
         Giocatori[i]=ciocatori;
       }else if (i>0)
           i--;
