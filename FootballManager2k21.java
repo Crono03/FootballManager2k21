@@ -4,19 +4,24 @@ import java.awt.*;
 
 public class FootballManager2k21{
 
+  public static String nomeAllenatore;
+  public static int budget= 250;
+  public static String nomeSquadra;
+
   public static void main(String[] args) {
     InputStreamReader isr;
     BufferedReader br;
     isr = new InputStreamReader(System.in);
     br = new BufferedReader(isr);
-    String nomeAllenatore;
-    String nomeSquadra;
+
+
     String[] Giocatori=new String[100];
     int[] Caratteristiche1=new int[Giocatori.length]; //velocita,tuffo
     int[] Caratteristiche2=new int[Giocatori.length]; //potenza,contrasto,posizione
     int[] Caratteristiche3=new int[Giocatori.length]; //dinamicità,visione di gioco, riflessi, scivolata
     String[] Ruoli=new String[Giocatori.length];
     int[] Prezzo=new int[Giocatori.length];
+
 
     titoliDiTesta();
 
@@ -25,18 +30,30 @@ public class FootballManager2k21{
 
     System.out.println("Benvenuto in Football Manager 2k21, la miglior simulazione calcistica della storia, non come quei nabbi di EA Sports ");
     System.out.println("");
+    dormi(1);
     System.out.println("Inserisci il tuo nome da allenatore:");
     System.out.print("Dr.  ");
     nomeAllenatore=insString();
+    System.out.println("");
+    System.out.println("");
     System.out.println("Ahhh, il famoso Allenatore "+nomeAllenatore+", bene! Adesso scegli il nome della squadra che dovrai formare");
     nomeSquadra=insString();
-    System.out.println(" ");
-    System.out.println("|");
-    System.out.println("|");
-    System.out.println("|");
-    System.out.println("|");
-    System.out.println("|");
     clearScreen();
+
+    contratto();
+    System.out.println("                              __________________");
+    System.out.println("Premi invio per firmare");
+    try{
+      System.in.read();
+    }catch(Exception e){System.out.println(e);}
+
+    clearScreen();
+    contratto();
+    System.out.println("                               "+nomeAllenatore);
+    dormi(2);
+
+    refreshScreen(nomeAllenatore, nomeSquadra, budget);
+
 
   }
 
@@ -51,15 +68,53 @@ public class FootballManager2k21{
 
   }
 
-    public static void clearScreen() {
+  public static void clearScreen() {
 
-      try{
+    // attenazione, funziona solo col cmd
+    try{
 
-        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-        
-      }catch(Exception e){System.out.println(e);}
+      new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 
-    }
+    }catch(Exception e){System.out.println(e);}
+
+  }
+
+  public static void refreshScreen(String nomeAllenatore, String nomeSquadra, int budget ){
+
+    clearScreen();
+
+    System.out.println(nomeAllenatore+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+" Ufficio "+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"Budget: "+budget+" Mln");
+    System.out.println(nomeSquadra);
+
+  }
+
+  public static void contratto(){
+
+    System.out.println(nomeAllenatore+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+" Ufficio ");
+    System.out.println("");
+    System.out.println("");
+    System.out.println("");
+    System.out.println("\t"+"\t"+"\t"+"Contratto     ");
+    System.out.println("");
+    System.out.println("");
+    System.out.println("                     ");
+    System.out.println("Nome:"+nomeAllenatore );
+    System.out.println("                     ");
+    System.out.println("Eta': 37");
+    System.out.println("                     ");
+    System.out.println("Sesso: Maschio       ");
+    System.out.println("Segni particolari: Crocifisso tatuato sulla nuca");
+    System.out.println("");
+    System.out.println("Squadra:"+nomeSquadra);
+    System.out.println("");
+    System.out.println("Stipendio: Una pacca sul bacino e una guancia sulla spalla");
+    System.out.println("");
+    System.out.println("Durata Contratto : Quinquennale");
+    System.out.println("");
+
+  }
+
+
 
   public static void titoliDiTesta() {
 
@@ -67,7 +122,7 @@ public class FootballManager2k21{
     clearScreen();
 
     for (int i=0; i<8; i++ )
-        System.out.println("");
+    System.out.println("");
 
     dormi(1);
     System.out.println("\t"+"\t"+"\t"+"\t"+"\t"+"FootballManager2k21");
@@ -82,15 +137,15 @@ public class FootballManager2k21{
 
 
     for (int i=0; i<8; i++ )
-      System.out.println("");
+    System.out.println("");
   }
 
 
   public static String insString(){
 
-      String nome=null;
-      String conferma=null;
-      boolean correggiuto = false ;
+    String nome=null;
+    String conferma=null;
+    boolean correggiuto = false ;
 
     do{
 
@@ -103,19 +158,33 @@ public class FootballManager2k21{
 
         nome = br.readLine();
 
-        System.out.println("\t"+"\t"+"\t"+nome + " E' corretto ? Y/N (se non metti niente o sbagli so affari tuoi) " );
+        System.out.println("\t"+"\t"+"\t"+nome + " E' corretto ? Y/N " );
 
         conferma = br.readLine();
 
         if (conferma.equals("Y") || conferma.equals("y") )
-          correggiuto = true;
+        correggiuto = true;
+        else if (conferma.equals("N") || conferma.equals("n") )
+        System.out.println("Per favore, re-inserisci il nome ");
+        else {
+
+          if (nomeAllenatore ==null ){
+            System.out.println("Come? Hai detto che ti chiami Mr. Pagliaccio? Y/N");
+            conferma = br.readLine();
+            System.out.println("Perfetto Mr. Pagliaccio");
+            nome="Mr. Pagliaccio";
+            correggiuto = true;
+          }else
+            System.out.println("Per favore, re-inserisci il nome ");
+
+        }
 
       }catch(Exception e){System.out.println(e);}
 
     }while(correggiuto == false);
 
     return nome;
-    }
+  }
 
   public static int randomizzaInt(int max, int min){
     int range=max-min+1;
@@ -151,20 +220,20 @@ public class FootballManager2k21{
       boolean controlloNomi=false;
       randNomi=randomizzaInt(Nomi.length-1,0);
       randCognomi=randomizzaInt(Cognomi.length-1,0);
-      String ciocatori= Nomi[randNomi]+" "+Cognomi[randCognomi];
+      String nomiCognomi= Nomi[randNomi]+" "+Cognomi[randCognomi];
 
       for (int j=0 ;j<i ;j++ ) {
-        String gae = Giocatori[j];
+        String Ccneg = Giocatori[j];
 
-        if ( (ciocatori.equals(gae) )  ) {  //gae=GenerazioneArrayEnonsapevochemetteredopo
+        if ( (nomiCognomi.equals(Ccneg) )  ) {  //Ccneg = Controlla Che Non Esista Giá
           controlloNomi=true ;
         }
       }
 
       if (controlloNomi == false  ){
-        Giocatori[i]=ciocatori;
+        Giocatori[i]=nomiCognomi;
       }else if (i>0)
-          i--;
+      i--;
     }
 
   }
