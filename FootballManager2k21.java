@@ -1,4 +1,6 @@
 import java.io.*;
+import java.util.concurrent.*;
+
 public class FootballManager2k21{
 
   public static void main(String[] args) {
@@ -7,31 +9,94 @@ public class FootballManager2k21{
     isr = new InputStreamReader(System.in);
     br = new BufferedReader(isr);
     String nomeAllenatore;
+    String nomeSquadra;
     String[] Giocatori=new String[100];
-    Int[] Caratteristiche1=new Int[Giocatori.length]; //velocita,tuffo
-    Int[] Caratteristiche2=new Int[Giocatori.length]; //potenza,contrasto,posizione
-    Int[] Caratteristiche3=new Int[Giocatori.length]; //dinamicità,visione di gioco, riflessi, scivolata
+    int[] Caratteristiche1=new int[Giocatori.length]; //velocita,tuffo
+    int[] Caratteristiche2=new int[Giocatori.length]; //potenza,contrasto,posizione
+    int[] Caratteristiche3=new int[Giocatori.length]; //dinamicità,visione di gioco, riflessi, scivolata
     String[] Ruoli=new String[Giocatori.length];
-    Int[] Prezzo=new Int[Giocatori.length];
+    int[] Prezzo=new int[Giocatori.length];
 
-    creaGiocator1(Giocatori);
+    titoliDiTesta();
+
+    /*creaGiocator1(Giocatori);
     creaStatistiche(Caratteristiche1, Caratteristiche2, Caratteristiche3);
-    nomeAllenatore=creaAllenatore();
+
+    System.out.println("Benvenuto in Football Manager 2k21 !!11!11!1!1!1!1!1!1!1!11!1!!1111!!!!!!!11!!!111!!!!!!!!!");
+    System.out.println("");
+    System.out.println("");
+    System.out.println("");
+
+    nomeAllenatore=insString();
+    nomeSquadra=insString();*/
 
   }
 
-  public static String creaAllenatore(){
-    InputStreamReader isr;
-    BufferedReader br;
-    isr = new InputStreamReader(System.in);
-    br = new BufferedReader(isr);
-    String nome=br.readLine();
+  public static void dormi (int i){
+
+    try{
+
+      TimeUnit time = TimeUnit.SECONDS;
+      time.sleep(i);
+
+    }catch(Exception e){System.out.println(e);}
+
+    }
+
+
+
+
+    public static void clearScreen() {
+
+      System.out.print("\033[H\033[2J");
+      System.out.flush();
+
+    }
+
+  public static void titoliDiTesta() {
+
+
+    clearScreen();
+
+    for (int i=0; i<8; i++ )
+        System.out.println("");
+
+    dormi(1);
+    System.out.println("\t"+"\t"+"\t"+"\t"+"\t"+"FootballManager2k21");
+    System.out.println("");
+    System.out.println("");
+    System.out.println("");
+    System.out.println("");
+    dormi(2);
+    System.out.println("Created By C4zz1 Studios Ltd.");
+    dormi(2);
+    clearScreen();
+
+
+    for (int i=0; i<8; i++ )
+      System.out.println("");
+  }
+
+
+  public static String insString(){
+
+      String nome=null;
+    try{
+
+      InputStreamReader isr;
+      BufferedReader br;
+      isr = new InputStreamReader(System.in);
+      br = new BufferedReader(isr);
+
+      nome = br.readLine();
+
+    }catch(Exception e){System.out.println(e);}
 
     return nome;
-  }
+    }
 
-  public static int randomizzaInt(Int max, int min){
-    range=max-min+1;
+  public static int randomizzaInt(int max, int min){
+    int range=max-min+1;
     return (int)(Math.random() * range) + min;
   }
 
@@ -43,7 +108,7 @@ public class FootballManager2k21{
 
   }
 
-  public static void creaStatistiche(Int Caratteristiche1[],Int Caratteristiche2[], Int Caratteristiche3[]){
+  public static void creaStatistiche(int Caratteristiche1[],int Caratteristiche2[], int Caratteristiche3[]){
     final int minStat=30;
     final int maxStat=99;
     for(int a=0;a<Caratteristiche1.length ;a++){
