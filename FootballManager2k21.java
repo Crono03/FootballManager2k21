@@ -15,6 +15,7 @@ public class FootballManager2k21{
 
 
     String[] Giocatori=new String[100];
+    int[] Overall=new int[Giocatori.length];
     int[] Caratteristiche1=new int[Giocatori.length]; //velocita,tuffo
     int[] Caratteristiche2=new int[Giocatori.length]; //potenza,contrasto,posizione
     int[] Caratteristiche3=new int[Giocatori.length]; //dinamicità,visione di gioco, riflessi, scivolata
@@ -33,6 +34,7 @@ public class FootballManager2k21{
 
     creaGiocator1(Giocatori);
     creaStatistiche(Caratteristiche1, Caratteristiche2, Caratteristiche3);
+    prezzi(Prezzo, Caratteristiche1, Caratteristiche2, Caratteristiche3, Overall);
 
     System.out.println("Benvenuto in Football Manager 2k21, la miglior simulazione calcistica della storia, non come quei nabbi di EA Sports ");
     System.out.println("");
@@ -60,7 +62,7 @@ public class FootballManager2k21{
 
     refreshScreen(nomeAllenatore, nomeSquadra, budget);
 
-    stampaTabella(Giocatori,  Ruoli,  Prezzo, Caratteristiche1 , Caratteristiche2,  Caratteristiche3,  nRuoli );
+    stampaTabella(Giocatori,  Ruoli,  Prezzo, Caratteristiche1 , Caratteristiche2,  Caratteristiche3,  nRuoli, Overall);
 
 
 
@@ -75,6 +77,12 @@ public class FootballManager2k21{
 
     }catch(Exception e){System.out.println(e);}
 
+  }
+
+  public static void randPrezzi(int min, int max, int prezzobase, int modifier,int[] Overall, int[]Prezzo, int a){
+    if(Overall[a]>min && Overall[a]<max){
+      Prezzo[a]=(prezzobase+randomizzaInt(modifier,1));
+    }
   }
 
   public static void clearScreen() {
@@ -222,8 +230,23 @@ public class FootballManager2k21{
     }
 
   }
+  public static void prezzi(int[] Prezzo,int[] Caratteristiche1,int[] Caratteristiche2,int[] Caratteristiche3,int[] Overall){
+    int media=0;
+    for (int a=0;a<Prezzo.length;a++ ) {
+      media=(Caratteristiche1[a]+Caratteristiche2[a]+Caratteristiche3[a])/3;
+      Overall[a]=media;
+      //Prezzo
+      randPrezzi(50, 55,1,3,Overall,Prezzo,a);
+      randPrezzi(55, 60,5,7,Overall,Prezzo,a);
+      randPrezzi(65, 70,7,10,Overall,Prezzo,a);
+      randPrezzi(75, 80,12,20,Overall,Prezzo,a);
+      randPrezzi(80, 85,20,35,Overall,Prezzo,a);
+      randPrezzi(85, 90,50,80,Overall,Prezzo,a);
+      randPrezzi(90, 99,85,165,Overall,Prezzo,a);
+    }
 
-  public static void stampaTabella(String[] Giocatori, String[] Ruoli, int[] Prezzo,int Caratteristiche1[],int Caratteristiche2[], int Caratteristiche3[], int[] nRuoli ){
+    }
+  public static void stampaTabella(String[] Giocatori, String[] Ruoli, int[] Prezzo,int Caratteristiche1[],int Caratteristiche2[], int Caratteristiche3[], int[] nRuoli, int[] Overall){
 
     int tabella = 0;
     String[] Pagine={"Portieri", "Difensori", "Centrocampisti", "Attacanti"};
@@ -240,13 +263,13 @@ public class FootballManager2k21{
       for (int j=0; j< spazi; j++ )
         System.out.print(" ");
 
-      System.out.print(Caratteristiche1[i]+"     "+Caratteristiche2[i]+"     "+Caratteristiche3[i]+"\n");
+      System.out.print(Caratteristiche1[i]+"     "+Caratteristiche2[i]+"     "+Caratteristiche3[i]+"     "+Overall[i]+"     "+Prezzo[i]+"\n");
     }
     System.out.println("");
   }
 
   public static void creaStatistiche(int Caratteristiche1[],int Caratteristiche2[], int Caratteristiche3[]){
-    final int minStat=30;
+    final int minStat=50;
     final int maxStat=99;
     for(int a=0;a<Caratteristiche1.length ;a++){
       Caratteristiche1[a]=randomizzaInt(maxStat, minStat);
