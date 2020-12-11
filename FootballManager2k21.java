@@ -21,6 +21,13 @@ public class FootballManager2k21{
     String[] Ruoli=new String[Giocatori.length];
     int[] Prezzo=new int[Giocatori.length];
 
+    final int nPortieri=10;
+    final int nDifensori=30;
+    final int nCentrocampisti=35;
+    final int nAttaccanti=25;
+
+    int[] nRuoli={nPortieri,nDifensori,nCentrocampisti,nAttaccanti};
+
 
     titoliDiTesta();
 
@@ -189,29 +196,24 @@ public class FootballManager2k21{
     return (int)(Math.random() * range) + min;
   }
 
-  public static void ruoli(String Ruoli[]){
-    final int nPortieri=10;
-    final int nDifensori=30;
-    final int nCentrocampisti=35;
-    final int nAttaccanti=25;
+  public static void ruoli(String Ruoli[], int[] nRuoli){
 
-    int[] nRuoli={10,30,35,25};
     int k =0;
 
     for (int i=0; i<=nRuoli.length; i++){
 
       for(int j=k; j<nRuoli[i]; j++){
 
-        if (j<= nPortieri )
+        if (j<= nRuoli[1] )
           Ruoli[j]="Portiere";
 
-        if(j>nPortieri && j<=nDifensori)
+        if(j>nRuoli[1] && j<=nRuoli[2])
           Ruoli[j]="Difensore";
 
-        if(j>nDifensori && j<=nCentrocampisti)
-          Ruoli[j]="nCentrocampista";
+        if(j>nRuoli[2] && j<=nRuoli[3])
+          Ruoli[j]="Centrocampista";
 
-        if(j>nCentrocampisti && j<=nAttaccanti)
+        if(j>nRuoli[3] && j<=nRuoli[4])
           Ruoli[j]="Attacante";
       }
 
@@ -220,9 +222,9 @@ public class FootballManager2k21{
 
   }
 
-  public static void stampaTabella(String[] Giocatori, String[] Ruoli, int[] Prezzo,int Caratteristiche1[],int Caratteristiche2[], int Caratteristiche3[] ){
+  public static void stampaTabella(String[] Giocatori, String[] Ruoli, int[] Prezzo,int Caratteristiche1[],int Caratteristiche2[], int Caratteristiche3[], int[] nRuoli ){
 
-    System.out.println(Giocatori[]+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+Caratteristiche1[]+"\t"+int Caratteristiche2[]+"\t"+int Caratteristiche3[]+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+prezzo[]);
+    System.out.println(Giocatori[]+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+Caratteristiche1[]+"\t"+int Caratteristiche2[]+"\t"+int Caratteristiche3[]+"\t"+"\t"+"\t"+"\t"+"\t"+"\t");
 
   }
 
