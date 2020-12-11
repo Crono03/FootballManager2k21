@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.concurrent.*;
-import java.awt.*;
 
 public class FootballManager2k21{
 
@@ -53,6 +52,8 @@ public class FootballManager2k21{
     dormi(2);
 
     refreshScreen(nomeAllenatore, nomeSquadra, budget);
+
+
 
 
   }
@@ -114,8 +115,6 @@ public class FootballManager2k21{
 
   }
 
-
-
   public static void titoliDiTesta() {
 
 
@@ -139,7 +138,6 @@ public class FootballManager2k21{
     for (int i=0; i<8; i++ )
     System.out.println("");
   }
-
 
   public static String insString(){
 
@@ -196,6 +194,35 @@ public class FootballManager2k21{
     final int nDifensori=30;
     final int nCentrocampisti=35;
     final int nAttaccanti=25;
+
+    int[] nRuoli={10,30,35,25};
+    int k =0;
+
+    for (int i=0; i<=nRuoli.length; i++){
+
+      for(int j=k; j<nRuoli[i]; j++){
+
+        if (j<= nPortieri )
+          Ruoli[j]="Portiere";
+
+        if(j>nPortieri && j<=nDifensori)
+          Ruoli[j]="Difensore";
+
+        if(j>nDifensori && j<=nCentrocampisti)
+          Ruoli[j]="nCentrocampista";
+
+        if(j>nCentrocampisti && j<=nAttaccanti)
+          Ruoli[j]="Attacante";
+      }
+
+      k += nRuoli[i];
+    }
+
+  }
+
+  public static void stampaTabella(String[] Giocatori, String[] Ruoli, int[] Prezzo,int Caratteristiche1[],int Caratteristiche2[], int Caratteristiche3[] ){
+
+    System.out.println(Giocatori[]+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+Caratteristiche1[]+"\t"+int Caratteristiche2[]+"\t"+int Caratteristiche3[]+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+prezzo[]);
 
   }
 
