@@ -7,7 +7,13 @@ public class FootballManager2k21{
   public static int budget= 250;
   public static String nomeSquadra;
 
+
   public static void main(String[] args) {
+    try{
+
+      new ProcessBuilder("cmd", "/c", "mode con: cols=160 lines=78").inheritIO().start().waitFor();
+
+    }catch(Exception e){System.out.println(e);}
     InputStreamReader isr;
     BufferedReader br;
     isr = new InputStreamReader(System.in);
@@ -94,20 +100,21 @@ public class FootballManager2k21{
 
     }catch(Exception e){System.out.println(e);}
 
+
   }
 
   public static void refreshScreen(String nomeAllenatore, String nomeSquadra, int budget ){
 
     clearScreen();
 
-    System.out.println(nomeAllenatore+"\t"+"\t"+"\t"+"\t"+"\t"+" Ufficio "+"\t"+"\t"+"\t"+"\t"+"Budget: "+budget+" Mln");
+    System.out.println(nomeAllenatore+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+" Ufficio "+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"Budget: "+budget+" Mln");
     System.out.println("Squadra: "+nomeSquadra);
 
   }
 
   public static void contratto(){
 
-    System.out.println(nomeAllenatore+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+" Ufficio ");
+    System.out.println(nomeAllenatore+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+" Ufficio ");
     System.out.println("");
     System.out.println("");
     System.out.println("");
@@ -122,7 +129,7 @@ public class FootballManager2k21{
     System.out.println("Sesso: Maschio       ");
     System.out.println("Segni particolari: Crocifisso tatuato sulla nuca");
     System.out.println("");
-    System.out.println("Squadra:"+nomeSquadra);
+    System.out.println("Squadra: "+nomeSquadra);
     System.out.println("");
     System.out.println("Stipendio: Una pacca sul bacino e una guancia sulla spalla");
     System.out.println("");
@@ -238,12 +245,14 @@ public class FootballManager2k21{
       Overall[a]=media;
       //Prezzo
       randPrezzi(50, 55,1,3,Overall,Prezzo,a);
-      randPrezzi(55, 60,5,7,Overall,Prezzo,a);
+      randPrezzi(55, 60,5,6,Overall,Prezzo,a);
+      randPrezzi(60, 65,6,7,Overall,Prezzo,a);
       randPrezzi(65, 70,7,10,Overall,Prezzo,a);
+      randPrezzi(70, 75,7,10,Overall,Prezzo,a);
       randPrezzi(75, 80,12,20,Overall,Prezzo,a);
       randPrezzi(80, 85,20,35,Overall,Prezzo,a);
       randPrezzi(85, 90,50,80,Overall,Prezzo,a);
-      randPrezzi(90, 99,85,165,Overall,Prezzo,a);
+      randPrezzi(90, 99,85,100,Overall,Prezzo,a);
     }
 
     }
@@ -253,9 +262,14 @@ public class FootballManager2k21{
     String[] Pagine={"Portieri", "Difensori", "Centrocampisti", "Attacanti"};
 
     System.out.println("");
+    System.out.println("");
+    System.out.println("");
     System.out.println("Pagina "+tabella+1+" di "+Pagine.length);
     System.out.println("");
-    System.out.println(Pagine[0]);
+    System.out.println("");
+    System.out.println("                                 "+Pagine[0]);
+    System.out.println("");
+    System.out.println("");
     System.out.println("");
 
     for(int i=0; i<=nRuoli[tabella]; i++){
