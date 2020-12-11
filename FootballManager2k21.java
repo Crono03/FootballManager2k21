@@ -36,7 +36,7 @@ public class FootballManager2k21{
     int[] nRuoli={nPortieri,nDifensori,nCentrocampisti,nAttaccanti};
 
 
-    titoliDiTesta();
+    /*titoliDiTesta();*/
 
     creaGiocator1(Giocatori);
     creaStatistiche(Caratteristiche1, Caratteristiche2, Caratteristiche3);
@@ -212,7 +212,7 @@ public class FootballManager2k21{
     return (int)(Math.random() * range) + min;
   }
 
-  public static void ruoli(String Ruoli[], int[] nRuoli){
+  /*public static void ruoli(String Ruoli[], int[] nRuoli){
 
     int k =0;
 
@@ -220,23 +220,23 @@ public class FootballManager2k21{
 
       for(int j=k; j<nRuoli[i]; j++){
 
-        if (j<= nRuoli[1] )
+        if (j< nRuoli[1] )
           Ruoli[j]="Portiere";
 
-        if(j>nRuoli[1] && j<=nRuoli[2])
+        if(j>=nRuoli[1] && j<nRuoli[2])
           Ruoli[j]="Difensore";
 
-        if(j>nRuoli[2] && j<=nRuoli[3])
+        if(j>=nRuoli[2] && j<nRuoli[3])
           Ruoli[j]="Centrocampista";
 
-        if(j>nRuoli[3] && j<=nRuoli[4])
+        if(j>=nRuoli[3] && j<nRuoli[4])
           Ruoli[j]="Attacante";
       }
 
       k += nRuoli[i];
     }
 
-  }
+  }*/
 
   public static void prezzi(int[] Prezzo,int[] Caratteristiche1,int[] Caratteristiche2,int[] Caratteristiche3,int[] Overall){
     int media=0;
@@ -269,12 +269,17 @@ public class FootballManager2k21{
     System.out.println("");
     System.out.println("                                 "+Pagine[0]);
     System.out.println("");
-    System.out.println("");
+    System.out.println("                         TUF    POS    RIF");
     System.out.println("");
 
-    for(int i=0; i<=nRuoli[tabella]; i++){
+    for(int i=0; i<nRuoli[tabella]; i++){
       int spazi = 27-Giocatori[i].length();
-      System.out.print(Giocatori[i]);
+      
+      if (i>=9)
+        spazi -=1;
+
+      System.out.print((i+1)+"  "+ Giocatori[i]);
+
       for (int j=0; j< spazi; j++ )
         System.out.print(" ");
 
