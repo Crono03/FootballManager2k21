@@ -60,6 +60,7 @@ public class FootballManager2k21{
 
     refreshScreen(nomeAllenatore, nomeSquadra, budget);
 
+    stampaTabella(Giocatori,  Ruoli,  Prezzo, Caratteristiche1 , Caratteristiche2,  Caratteristiche3,  nRuoli );
 
 
 
@@ -92,7 +93,7 @@ public class FootballManager2k21{
     clearScreen();
 
     System.out.println(nomeAllenatore+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+" Ufficio "+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"Budget: "+budget+" Mln");
-    System.out.println(nomeSquadra);
+    System.out.println("Squadra: "+nomeSquadra);
 
   }
 
@@ -224,8 +225,24 @@ public class FootballManager2k21{
 
   public static void stampaTabella(String[] Giocatori, String[] Ruoli, int[] Prezzo,int Caratteristiche1[],int Caratteristiche2[], int Caratteristiche3[], int[] nRuoli ){
 
-    System.out.println(Giocatori[]+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+Caratteristiche1[]+"\t"+int Caratteristiche2[]+"\t"+int Caratteristiche3[]+"\t"+"\t"+"\t"+"\t"+"\t"+"\t");
+    int tabella = 0;
+    String[] Pagine={"Portieri", "Difensori", "Centrocampisti", "Attacanti"};
 
+    System.out.println("");
+    System.out.println("Pagina "+tabella+1+" di "+Pagine.length);
+    System.out.println("");
+    System.out.println(Pagine[0]);
+    System.out.println("");
+
+    for(int i=0; i<=nRuoli[tabella]; i++){
+      int spazi = 27-Giocatori[i].length();
+      System.out.print(Giocatori[i]);
+      for (int j=0; j< spazi; j++ )
+        System.out.print(" ");
+
+      System.out.print(Caratteristiche1[i]+"     "+Caratteristiche2[i]+"     "+Caratteristiche3[i]+"\n");
+    }
+    System.out.println("");
   }
 
   public static void creaStatistiche(int Caratteristiche1[],int Caratteristiche2[], int Caratteristiche3[]){
