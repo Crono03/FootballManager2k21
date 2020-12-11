@@ -80,7 +80,7 @@ public class FootballManager2k21{
   }
 
   public static void randPrezzi(int min, int max, int prezzobase, int modifier,int[] Overall, int[]Prezzo, int a){
-    if(Overall[a]>min && Overall[a]<max){
+    if(Overall[a]>=min && Overall[a]<=max){
       Prezzo[a]=(prezzobase+randomizzaInt(modifier,1));
     }
   }
@@ -100,7 +100,7 @@ public class FootballManager2k21{
 
     clearScreen();
 
-    System.out.println(nomeAllenatore+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+" Ufficio "+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"Budget: "+budget+" Mln");
+    System.out.println(nomeAllenatore+"\t"+"\t"+"\t"+"\t"+"\t"+" Ufficio "+"\t"+"\t"+"\t"+"\t"+"Budget: "+budget+" Mln");
     System.out.println("Squadra: "+nomeSquadra);
 
   }
@@ -230,6 +230,7 @@ public class FootballManager2k21{
     }
 
   }
+
   public static void prezzi(int[] Prezzo,int[] Caratteristiche1,int[] Caratteristiche2,int[] Caratteristiche3,int[] Overall){
     int media=0;
     for (int a=0;a<Prezzo.length;a++ ) {
