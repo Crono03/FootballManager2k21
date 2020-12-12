@@ -65,7 +65,7 @@ public class FootballManager2k21{
     System.out.println("                              __________________");
     System.out.println("Premi invio per firmare");
     try{
-      System.in.read();
+      System.in.read(new byte[2]);
     }catch(Exception e){System.out.println(e);}
 
 
@@ -243,10 +243,10 @@ public class FootballManager2k21{
 
   public static void Tabbella(String[] Giocatori, int[] Prezzo,int Caratteristiche1[],int Caratteristiche2[], int Caratteristiche3[], int[] nRuoli, int[] Overall, Boolean[] disponibilita){
 
-    InputStreamReader isr1;
-    BufferedReader br1;
-    isr1=new InputStreamReader(System.in);
-    br1=new BufferedReader(isr1);
+    InputStreamReader isr;
+    BufferedReader br;
+    isr=new InputStreamReader(System.in);
+    br=new BufferedReader(isr);
 
     int pagina = 1;
     boolean c= true;
@@ -317,7 +317,7 @@ public class FootballManager2k21{
 
         try{
 
-  				String xStringa=br1.readLine();
+  				String xStringa=br.readLine();
   				s= Integer.parseInt(xStringa);
 
         }catch(Exception e){System.out.println(e);}
@@ -336,7 +336,7 @@ public class FootballManager2k21{
 
           try{
 
-      			String xStringa=br1.readLine();
+      			String xStringa=br.readLine();
       			t= Integer.parseInt(xStringa);
 
             if (t>0 && t<5 ){
@@ -358,7 +358,7 @@ public class FootballManager2k21{
 
           try{
 
-      			String xStringa=br1.readLine();
+      			String xStringa=br.readLine();
       			a = Integer.parseInt(xStringa);
 
           }catch(Exception e){System.out.println(e);}
