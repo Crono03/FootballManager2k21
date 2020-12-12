@@ -68,6 +68,7 @@ public class FootballManager2k21{
       System.in.read();
     }catch(Exception e){System.out.println(e);}
 
+
     clearScreen();
     contratto();
     System.out.println("                               "+nomeAllenatore);
@@ -220,31 +221,6 @@ public class FootballManager2k21{
     return (int)(Math.random() * range) + min;
   }
 
-  /*public static void ruoli(String Ruoli[], int[] nRuoli){
-
-    int k =0;
-
-    for (int i=0; i<=nRuoli.length; i++){
-
-      for(int j=k; j<nRuoli[i]; j++){
-
-        if (j< nRuoli[1] )
-          Ruoli[j]="Portiere";
-
-        if(j>=nRuoli[1] && j<nRuoli[2])
-          Ruoli[j]="Difensore";
-
-        if(j>=nRuoli[2] && j<nRuoli[3])
-          Ruoli[j]="Centrocampista";
-
-        if(j>=nRuoli[3] && j<nRuoli[4])
-          Ruoli[j]="Attacante";
-      }
-
-      k += nRuoli[i];
-    }
-
-  }*/
 
   public static void prezzi(int[] Prezzo,int[] Caratteristiche1,int[] Caratteristiche2,int[] Caratteristiche3,int[] Overall){
     int media=0;
@@ -267,10 +243,10 @@ public class FootballManager2k21{
 
   public static void Tabbella(String[] Giocatori, int[] Prezzo,int Caratteristiche1[],int Caratteristiche2[], int Caratteristiche3[], int[] nRuoli, int[] Overall, Boolean[] disponibilita){
 
-    InputStreamReader isr;
-    BufferedReader br;
-    isr=new InputStreamReader(System.in);
-    br=new BufferedReader(isr);
+    InputStreamReader isr1;
+    BufferedReader br1;
+    isr1=new InputStreamReader(System.in);
+    br1=new BufferedReader(isr1);
 
     int pagina = 1;
     boolean c= true;
@@ -341,15 +317,15 @@ public class FootballManager2k21{
 
         try{
 
-  				String xStringa=br.readLine();
+  				String xStringa=br1.readLine();
   				s= Integer.parseInt(xStringa);
 
-        }catch(Exception e){System.out.println("canazzo");}
+        }catch(Exception e){System.out.println(e);}
 
-        if (s< 0 || s> 2)
+        if (s< 1 || s> 2)
           System.out.println("Per favore, inserire SOLO il numero della scelta");
 
-      }while(s< 0 || s> 2);
+      }while(s< 1 || s> 2);
 
       if (s == 1){
 
@@ -360,7 +336,7 @@ public class FootballManager2k21{
 
           try{
 
-      			String xStringa=br.readLine();
+      			String xStringa=br1.readLine();
       			t= Integer.parseInt(xStringa);
 
             if (t>0 && t<5 ){
@@ -374,7 +350,7 @@ public class FootballManager2k21{
 
         }while(t< 1 || t>4 );
 
-      }else{
+      }else if(s==2){
 
         int a= -1;
         do{
@@ -382,7 +358,7 @@ public class FootballManager2k21{
 
           try{
 
-      			String xStringa=br.readLine();
+      			String xStringa=br1.readLine();
       			a = Integer.parseInt(xStringa);
 
           }catch(Exception e){System.out.println(e);}
