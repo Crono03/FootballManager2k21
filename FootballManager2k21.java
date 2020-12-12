@@ -344,7 +344,7 @@ public class FootballManager2k21{
   				String xStringa=br.readLine();
   				s= Integer.parseInt(xStringa);
 
-        }catch(Exception e){System.out.println(e);}
+        }catch(Exception e){System.out.println("canazzo");}
 
         if (s< 0 || s> 2)
           System.out.println("Per favore, inserire SOLO il numero della scelta");
@@ -391,8 +391,10 @@ public class FootballManager2k21{
             System.out.println("Il giocatore richiesto non é presente in questa pagina. Inserire un numero di questa pagina");
 
         }while(a<nRuoli[pagina-1] || a>nRuoli[pagina]);
-
+        System.out.println("Ottimo affare, hai acquistato "+Giocatori[a-1]+" Alla modica cifra di "+Prezzo[a-1]);
+        budget=budget-Prezzo[a-1];
         disponibilita[a-1]= false;
+        dormi(2);
         refreshScreen();
       }
 
