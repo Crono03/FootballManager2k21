@@ -21,11 +21,13 @@ public class FootballManager2k21{
     isr = new InputStreamReader(System.in);
     br = new BufferedReader(isr);
 
+
     String[] Giocatori=new String[100];
     int[] Overall=new int[Giocatori.length];
     int[] Caratteristiche1=new int[Giocatori.length]; //velocita,tuffo
     int[] Caratteristiche2=new int[Giocatori.length]; //potenza,contrasto,posizione
     int[] Caratteristiche3=new int[Giocatori.length]; //dinamicità,visione di gioco, riflessi, scivolata
+    Boolean[] disponibilita=new Boolean[Giocatori.length];//true Disponibile, false non disponibile
     String[] Ruoli=new String[Giocatori.length];
     int[] Prezzo=new int[Giocatori.length];
 
@@ -34,13 +36,18 @@ public class FootballManager2k21{
     final int nCentrocampisti=35;
     final int nAttaccanti=25;
 
-    int[] nRuoli={nPortieri,nDifensori+nPortieri,nCentrocampisti+nDifensori+nPortieri,nAttaccanti+nCentrocampisti+nDifensori+nPortieri};
+    int[] nRuoli={0, nPortieri,nDifensori+nPortieri,nCentrocampisti+nDifensori+nPortieri,nAttaccanti+nCentrocampisti+nDifensori+nPortieri};
+    //contiene gli step del vettore in cui cambiano i ruoli dei giocatori
 
-    /*titoliDiTesta();*/
+    titoliDiTesta();
 
     creaGiocator1(Giocatori);
     creaStatistiche(Caratteristiche1, Caratteristiche2, Caratteristiche3);
     prezzi(Prezzo, Caratteristiche1, Caratteristiche2, Caratteristiche3, Overall);
+
+    for (int i=0; i<Giocatori.length;i++)
+      disponibilita[i]=true;
+
 
     System.out.println("Benvenuto in Football Manager 2k21, la miglior simulazione calcistica della storia, non come quei nabbi di EA Sports ");
     System.out.println("");
@@ -66,11 +73,11 @@ public class FootballManager2k21{
     System.out.println("                               "+nomeAllenatore);
     dormi(2);
 
-    refreshScreen(nomeAllenatore, nomeSquadra, budget);
+    refreshScreen();
 
     System.out.println("");
 
-    stampaTabella(Giocatori, Prezzo, Caratteristiche1 , Caratteristiche2,  Caratteristiche3,  nRuoli, Overall);
+    Tabbella(Giocatori, Prezzo, Caratteristiche1 , Caratteristiche2,  Caratteristiche3,  nRuoli, Overall, disponibilita);
 
 
   }
@@ -104,7 +111,7 @@ public class FootballManager2k21{
 
   }
 
-  public static void refreshScreen(String nomeAllenatore, String nomeSquadra, int budget ){
+  public static void refreshScreen(){
 
     clearScreen();
 
@@ -258,70 +265,151 @@ public class FootballManager2k21{
 
     }
 
-  public static void stampaTabella(String[] Giocatori, int[] Prezzo,int Caratteristiche1[],int Caratteristiche2[], int Caratteristiche3[], int[] nRuoli, int[] Overall){
+  public static void Tabbella(String[] Giocatori, int[] Prezzo,int Caratteristiche1[],int Caratteristiche2[], int Caratteristiche3[], int[] nRuoli, int[] Overall, Boolean[] disponibilita){
 
-    int pagina = 0;
+    InputStreamReader isr;
+    BufferedReader br;
+    isr=new InputStreamReader(System.in);
+    br=new BufferedReader(isr);
 
-    String[] nomePagine={"Portieri", "Difensori", "Centrocampisti", "Attacanti"};
+    int pagina = 1;
+    boolean c= true;
+    int s = 0;
 
-    System.out.println("");
-    System.out.println("");
-    System.out.println("");
-    System.out.println("Pagina "+pagina+1+" di "+nomePagine.length);
-    System.out.println("");
-    System.out.println("");
-    System.out.println("                                 "+nomePagine[0]);
-    System.out.println("");
+    do{
 
-    switch(pagina){
+      String[] nomePagine={"Portieri", "Difensori", "Centrocampisti", "Attacanti"};
 
-      case 0:
-        System.out.println("                              TUF    POS    RIF    OVL   $$$");
-      break;
+      System.out.println("");
+      System.out.println("");
+      System.out.println("");
+      System.out.println("Pagina "+(pagina)+" di "+nomePagine.length);
+      System.out.println("");
+      System.out.println("");
+      System.out.println("                                 "+nomePagine[pagina-1]);
+      System.out.println("");
 
-      case 1:
-        System.out.println("                              VEl    CNT    SCI    OVL   $$$");
-      break;
+      switch(pagina){
 
-      case 2:
-        System.out.println("                              VEl    POT    DIN    OVL   $$$");
-      break;
+        case 1:
+          System.out.println("                              TUF    POS    RIF    OVL   $$$");
+        break;
 
-      case 3:
-        System.out.println("                              VEl    POT    DIN    OVL   $$$");
-      break;
+        case 2:
+          System.out.println("                              VEl    CNT    SCI    OVL   $$$");
+        break;
 
-    }
+        case 3:
+          System.out.println("                              VEl    POT    DIN    OVL   $$$");
+        break;
 
-    System.out.println("");
+        case 4:
+          System.out.println("                              VEl    POT    DIN    OVL   $$$");
+        break;
+      }
 
-    for(int i=0; i<nRuoli[pagina]; i++){
-      int spazi = 27-Giocatori[i].length();
+      System.out.println("");
 
-      if (i>=9)
-        spazi -=1;
+      for(int i=nRuoli[pagina-1]; i<nRuoli[pagina]; i++){
+        int spazi = 27-Giocatori[i].length();
 
-      System.out.print((i+1)+"  "+ Giocatori[i]);
+        if (i>=9)
+          spazi -=1;
 
-      for (int j=0; j< spazi; j++ )
-        System.out.print(" ");
+        System.out.print((i+1)+"  "+ Giocatori[i]);
 
-      System.out.print(Caratteristiche1[i]+"     "+Caratteristiche2[i]+"     "+Caratteristiche3[i]+"     "+Overall[i]+"     "+Prezzo[i]+"\n");
+        for (int j=0; j< spazi; j++ )
+          System.out.print(" ");
 
-      pagina+=frecce();
-    }
-    System.out.println("");
+        System.out.print(Caratteristiche1[i]+"     "+Caratteristiche2[i]+"     "+Caratteristiche3[i]+"     "+Overall[i]+"     "+Prezzo[i]+"\t");
+
+        if(disponibilita[i] == true )
+          System.out.println("Disponibile ");
+        else
+          System.out.println("Non Disponibile");
+
+        //pagina+=frecce();
+      }
+      System.out.println("");
+      System.out.println("");
+
+      do{
+
+        System.out.println("Che cosa vuoi fare?");
+        System.out.println("1) Cambiare pagina ");
+        System.out.println("2) Comprare un giocatore");
+
+        try{
+
+  				String xStringa=br.readLine();
+  				s= Integer.parseInt(xStringa);
+
+        }catch(Exception e){System.out.println(e);}
+
+        if (s< 0 || s> 2)
+          System.out.println("Per favore, inserire SOLO il numero della scelta");
+
+      }while(s< 0 || s> 2);
+
+      if (s == 1){
+
+        int t=0;
+        System.out.println("Inserire il numero della pagina a cui si vuole andare");
+
+        do{
+
+          try{
+
+      			String xStringa=br.readLine();
+      			t= Integer.parseInt(xStringa);
+
+            if (t>0 && t<5 ){
+              pagina = t;
+              refreshScreen();
+            }
+            else
+              System.out.println("Attenzione! Le pagine vanno da 1 a 4. Inserire un valore valido.");
+
+          }catch(Exception e){System.out.println(e);}
+
+        }while(t< 1 || t>4 );
+
+      }else{
+
+        int a= -1;
+        do{
+          System.out.println("Inserire il numero del giocatore che si desidera comprare");
+
+          try{
+
+      			String xStringa=br.readLine();
+      			a = Integer.parseInt(xStringa);
+
+          }catch(Exception e){System.out.println(e);}
+
+          if(a<nRuoli[pagina-1] || a>nRuoli[pagina])
+            System.out.println("Il giocatore richiesto non é presente in questa pagina. Inserire un numero di questa pagina");
+
+        }while(a<nRuoli[pagina-1] || a>nRuoli[pagina]);
+
+        disponibilita[a-1]= false;
+        refreshScreen();
+      }
 
 
+    }while(c == true);
   }
 
   /*public static int frecce(){
 
-    if(KeyEvent.getKeyCode()==KeyEvent.VK_RIGHT)
+    double tastoP= 0;
+    tastoP= KeyEvent.getKeyCode();
+
+    if(  tastoP ==KeyEvent.VK_RIGHT)
       return 1;
-    if(KeyEvent.getKeyCode()==KeyEvent.VK_LEFT)
+    if(  tastoP ==KeyEvent.VK_LEFT)
       return -1;
-  }*/ //gue gue gue gue 
+  }*/ //gue gue gue gue
 
   public static void creaStatistiche(int Caratteristiche1[],int Caratteristiche2[], int Caratteristiche3[]){
     final int minStat=50;
