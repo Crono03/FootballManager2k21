@@ -367,14 +367,22 @@ public class FootballManager2k21{
             System.out.println("Il giocatore richiesto non é presente in questa pagina. Inserire un numero di questa pagina");
 
         }while(a<nRuoli[pagina-1] || a>nRuoli[pagina]);
-        System.out.println("Ottimo affare, hai acquistato "+Giocatori[a-1]+" Alla modica cifra di "+Prezzo[a-1]);
-        budget=budget-Prezzo[a-1];
-        disponibilita[a-1]= false;
-        dormi(2);
-        refreshScreen();
+        
+        if(disponibilita[a-1] == true){
+          if(budget>=Prezzo[a-1] ){
+            System.out.println("Ottimo affare, hai acquistato "+Giocatori[a-1]+" Alla modica cifra di "+Prezzo[a-1]);
+            budget=budget-Prezzo[a-1];
+            disponibilita[a-1]= false;
+          }
+          else
+            System.out.println("Non hai abbastanza soldi");
+        }
+        else
+          System.out.println("Giocatore già acquistato");
+
       }
-
-
+      dormi(2);
+      refreshScreen();
     }while(c == true);
   }
 
