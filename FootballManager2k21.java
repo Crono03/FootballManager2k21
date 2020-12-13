@@ -7,7 +7,9 @@ public class FootballManager2k21{
   public static String nomeAllenatore;
   public static int budget= 250;
   public static String nomeSquadra;
-
+  public static int modulo = -1;
+  public static String[] nModuli={" 4-3-3", "4-4-2", "3-5-2"};
+  //variabili globali
 
   public static void main(String[] args) {
     try{
@@ -36,10 +38,11 @@ public class FootballManager2k21{
     final int nCentrocampisti=35;
     final int nAttaccanti=25;
 
+
     int[] nRuoli={0, nPortieri,nDifensori+nPortieri,nCentrocampisti+nDifensori+nPortieri,nAttaccanti+nCentrocampisti+nDifensori+nPortieri};
     //contiene gli step del vettore in cui cambiano i ruoli dei giocatori
 
-    titoliDiTesta();
+    //Intro();
 
     creaGiocator1(Giocatori);
     creaStatistiche(Caratteristiche1, Caratteristiche2, Caratteristiche3);
@@ -55,8 +58,7 @@ public class FootballManager2k21{
     System.out.println("Inserisci il tuo nome da allenatore:");
     System.out.print("Dr.  ");
     nomeAllenatore=insString();
-    System.out.println("");
-    System.out.println("");
+    righiDiSpazio(2);
     System.out.println("Ahhh, il famoso Allenatore "+nomeAllenatore+", bene! Adesso scegli il nome della squadra che dovrai formare");
     nomeSquadra=insString();
     clearScreen();
@@ -70,16 +72,20 @@ public class FootballManager2k21{
 
 
     clearScreen();
+
     contratto();
+
     System.out.println("                               "+nomeAllenatore);
+
     dormi(2);
+
+    clearScreen();
+
+    insModulo ();
 
     refreshScreen();
 
-    System.out.println("");
-    System.out.println("Per prima cosa dovrai formare una squadra, scegli il modulo tra i seguenti: ");
-    System.out.println("1) 4-3-3  2) 4-4-2  3) 3-5-2");
-    Tabella(Giocatori, Prezzo, Caratteristiche1 , Caratteristiche2,  Caratteristiche3,  nRuoli, Overall, disponibilita);
+    mercato(Giocatori, Prezzo, Caratteristiche1 , Caratteristiche2,  Caratteristiche3,  nRuoli, Overall, disponibilita);
 
 
   }
@@ -110,45 +116,35 @@ public class FootballManager2k21{
 
     }catch(Exception e){System.out.println(e);}
 
-
   }
 
   public static void refreshScreen(){
 
     clearScreen();
 
-    System.out.println(nomeAllenatore+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+" Ufficio "+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"Budget: "+budget+" Mln");
-    System.out.println("Squadra: "+nomeSquadra);
+    System.out.println(nomeAllenatore+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+" Ufficio "+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"Budget: "+budget+" Mln"+"\n");
+    System.out.println("Squadra: "+nomeSquadra+"\n");
+    System.out.println("Modulo:" +nModuli[modulo]+"\n");
 
   }
 
   public static void contratto(){
 
     System.out.println(nomeAllenatore+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+" Ufficio ");
-    System.out.println("");
-    System.out.println("");
-    System.out.println("");
+    righiDiSpazio(3);
     System.out.println("\t"+"\t"+"\t"+"Contratto     ");
-    System.out.println("");
-    System.out.println("");
-    System.out.println("                     ");
-    System.out.println("Nome: "+nomeAllenatore );
-    System.out.println("                     ");
-    System.out.println("Eta': 37");
-    System.out.println("                     ");
-    System.out.println("Sesso: Maschio       ");
-    System.out.println("Segni particolari: Crocifisso tatuato sulla nuca");
-    System.out.println("");
-    System.out.println("Squadra: "+nomeSquadra);
-    System.out.println("");
-    System.out.println("Stipendio: Una pacca sul bacino e una guancia sulla spalla");
-    System.out.println("");
-    System.out.println("Durata Contratto : Quinquennale");
-    System.out.println("");
+    righiDiSpazio(2);
+    System.out.println("Nome: "+nomeAllenatore+"\n");
+    System.out.println("Eta': 37"+"\n");
+    System.out.println("Sesso: Maschio       "+"\n");
+    System.out.println("Segni particolari: Crocifisso tatuato sulla nuca"+"\n");
+    System.out.println("Squadra: "+nomeSquadra+"\n");
+    System.out.println("Stipendio: Una pacca sul bacino e una guancia sulla spalla"+"\n");
+    System.out.println("Durata Contratto : Quinquennale"+"\n");
 
   }
 
-  public static void titoliDiTesta() {
+  public static void Intro() {
 
 
     clearScreen();
@@ -158,10 +154,7 @@ public class FootballManager2k21{
 
     dormi(1);
     System.out.println("\t"+"\t"+"\t"+"\t"+"\t"+"FootballManager2k21");
-    System.out.println("");
-    System.out.println("");
-    System.out.println("");
-    System.out.println("");
+  righiDiSpazio(4);
     dormi(2);
     System.out.println("Created By C4zz1 Studios Ltd.");
     dormi(2);
@@ -187,25 +180,38 @@ public class FootballManager2k21{
         isr = new InputStreamReader(System.in);
         br = new BufferedReader(isr);
 
+        do{
+
         nome = br.readLine();
+
+        if(nome.equals(""))
+          System.out.println("Per favore inserire un nome");
+
+        }while(nome.equals(""));
 
         System.out.println("\t"+"\t"+"\t"+nome + " E' corretto ? Y/N " );
 
         conferma = br.readLine();
 
         if (conferma.equals("Y") || conferma.equals("y") )
-        correggiuto = true;
+          correggiuto = true;
+
         else if (conferma.equals("N") || conferma.equals("n") )
-        System.out.println("Per favore, re-inserisci il nome ");
+
+          System.out.println("Per favore, re-inserisci il nome ");
+
         else {
 
-          if (nomeAllenatore ==null ){
+          if (nomeAllenatore == null  ){
+
             System.out.println("Come? Hai detto che ti chiami Mr. Pagliaccio? Y/N");
             conferma = br.readLine();
             System.out.println("Perfetto Mr. Pagliaccio");
             nome="Mr. Pagliaccio";
             correggiuto = true;
+
           }else
+
             System.out.println("Per favore, re-inserisci il nome ");
 
         }
@@ -242,7 +248,7 @@ public class FootballManager2k21{
 
     }
 
-  public static void Tabella(String[] Giocatori, int[] Prezzo,int Caratteristiche1[],int Caratteristiche2[], int Caratteristiche3[], int[] nRuoli, int[] Overall, Boolean[] disponibilita){
+  public static void mercato(String[] Giocatori, int[] Prezzo,int Caratteristiche1[],int Caratteristiche2[], int Caratteristiche3[], int[] nRuoli, int[] Overall, Boolean[] disponibilita){
 
     InputStreamReader isr;
     BufferedReader br;
@@ -252,50 +258,64 @@ public class FootballManager2k21{
     int pagina = 1;
     boolean c= true;
     int s = 0;
+    int spazi = 35;
 
     do{
 
       String[] nomePagine={"Portieri", "Difensori", "Centrocampisti", "Attacanti"};
 
-      System.out.println("");
-      System.out.println("");
-      System.out.println("");
+      righiDiSpazio(3);
       System.out.println("Pagina "+(pagina)+" di "+nomePagine.length);
-      System.out.println("");
-      System.out.println("");
+      righiDiSpazio(2);
       System.out.println("                                 "+nomePagine[pagina-1]);
       System.out.println("");
 
       switch(pagina){
 
         case 1:
-          System.out.println("                              TUF    POS    RIF    OVR   $$$");
+
+          for (int j=0; j< (spazi+3); j++ )
+            System.out.print(" ");
+          System.out.println("TUF    POS    RIF    OVR    $$$");
+
         break;
 
         case 2:
-          System.out.println("                              VEl    DEF    SCI    OVR   $$$");
+
+          for (int j=0; j< (spazi+3); j++ )
+            System.out.print(" ");
+          System.out.println("VEl    DEF    SCI    OVR    $$$");
+
         break;
 
         case 3:
-          System.out.println("                              VEl    PAS    DRI    OVR   $$$");
+          for (int j=0; j< (spazi+3); j++ )
+            System.out.print(" ");
+          System.out.println("VEl    PAS    DRI    OVR    $$$");
         break;
 
         case 4:
-          System.out.println("                              VEl    POT    DRI    OVR   $$$");
+          for (int j=0; j< (spazi+3); j++ )
+            System.out.print(" ");
+          System.out.println("VEl    POT    DRI    OVR    $$$");
         break;
       }
 
       System.out.println("");
 
       for(int i=nRuoli[pagina-1]; i<nRuoli[pagina]; i++){
-        int spazi = 27-Giocatori[i].length();
 
-        if (i>=9)
-          spazi -=1;
+        int sb = spazi-Giocatori[i].length();
 
-        System.out.print((i+1)+"  "+ Giocatori[i]);
+        if (i>=9 )
+          sb-=1;
 
-        for (int j=0; j< spazi; j++ )
+        if(i >= 99)
+          System.out.print((i+1)+" "+ Giocatori[i]);
+        else
+          System.out.print((i+1)+"  "+ Giocatori[i]);
+
+        for (int j=0; j< sb; j++ )
           System.out.print(" ");
 
         System.out.print(Caratteristiche1[i]+"     "+Caratteristiche2[i]+"     "+Caratteristiche3[i]+"     "+Overall[i]+"     "+Prezzo[i]+"\t");
@@ -307,8 +327,7 @@ public class FootballManager2k21{
 
         //pagina+=frecce();
       }
-      System.out.println("");
-      System.out.println("");
+      righiDiSpazio(2);
 
       do{
 
@@ -382,7 +401,7 @@ public class FootballManager2k21{
           System.out.println("Giocatore già acquistato");
 
       }
-      dormi(2);
+      dormi(1);
       refreshScreen();
     }while(c == true);
   }
@@ -434,6 +453,59 @@ public class FootballManager2k21{
       }else if (i>0)
       i--;
     }
+
+  }
+
+  public static void righiDiSpazio(int s){
+
+    for(int i= 0; i<=s;i++)
+      System.out.println("");
+
+  }
+
+  public static void insModulo(){
+
+    InputStreamReader isr;
+    BufferedReader br;
+    isr = new InputStreamReader(System.in);
+    br = new BufferedReader(isr);
+
+    System.out.println("Per prima cosa dovrai formare una squadra, scegli il modulo tra i seguenti: ");
+    System.out.println("1) 4-3-3  2) 4-4-2  3) 3-5-2");
+    System.out.println("");
+    boolean m = false;
+
+    do{
+
+      try{
+
+        String xStringa=br.readLine();
+        modulo= (Integer.parseInt(xStringa))-1;
+
+      }catch(Exception e){System.out.println(e);}
+
+      if (modulo<0 || modulo> 2 )
+        System.out.println("Perfavore, inserire un numero valido");
+      else{
+        System.out.println("Sei sicuro di volere il "+nModuli[modulo]+" ? Dovrai tenertelo per tutta la stagione. Y/N");
+
+        String conferma = null;
+
+        try{
+          conferma=br.readLine();
+        }catch(Exception e){System.out.println(e);}
+
+        if (conferma.equals("Y") || conferma.equals("y") )
+          m = true;
+
+        else if (conferma.equals("N") || conferma.equals("n") )
+
+          System.out.println("Per favore, scegli nuovamente il modulo ");
+      }
+
+    }while(m == false );
+
+    System.out.println("Perfetto");
 
   }
 }
