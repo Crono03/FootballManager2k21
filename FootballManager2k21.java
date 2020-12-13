@@ -12,7 +12,7 @@ public class FootballManager2k21{
   public static void main(String[] args) {
     try{
 
-      new ProcessBuilder("cmd", "/c", "mode con: cols=160 lines=78").inheritIO().start().waitFor();
+      new ProcessBuilder("cmd", "/c", "mode con: cols=180 lines=120").inheritIO().start().waitFor();
 
     }catch(Exception e){System.out.println(e);}
 
@@ -24,9 +24,9 @@ public class FootballManager2k21{
 
     String[] Giocatori=new String[100];
     int[] Overall=new int[Giocatori.length];
-    int[] Caratteristiche1=new int[Giocatori.length]; //velocita,tuffo
-    int[] Caratteristiche2=new int[Giocatori.length]; //potenza,contrasto,posizione
-    int[] Caratteristiche3=new int[Giocatori.length]; //dinamicità,visione di gioco, riflessi, scivolata
+    int[] Caratteristiche1=new int[Giocatori.length]; //velocità, tuffo
+    int[] Caratteristiche2=new int[Giocatori.length]; //potenza, difesa, posizione, passaggio
+    int[] Caratteristiche3=new int[Giocatori.length]; //dribbling, riflessi, scivolata
     Boolean[] disponibilita=new Boolean[Giocatori.length];//true Disponibile, false non disponibile
     String[] Ruoli=new String[Giocatori.length];
     int[] Prezzo=new int[Giocatori.length];
@@ -77,8 +77,9 @@ public class FootballManager2k21{
     refreshScreen();
 
     System.out.println("");
-
-    Tabbella(Giocatori, Prezzo, Caratteristiche1 , Caratteristiche2,  Caratteristiche3,  nRuoli, Overall, disponibilita);
+    System.out.println("Per prima cosa dovrai formare una squadra, scegli il modulo tra i seguenti: ");
+    System.out.println("1) 4-3-3  2) 4-4-2  3) 3-5-2");
+    Tabella(Giocatori, Prezzo, Caratteristiche1 , Caratteristiche2,  Caratteristiche3,  nRuoli, Overall, disponibilita);
 
 
   }
@@ -131,7 +132,7 @@ public class FootballManager2k21{
     System.out.println("");
     System.out.println("");
     System.out.println("                     ");
-    System.out.println("Nome:"+nomeAllenatore );
+    System.out.println("Nome: "+nomeAllenatore );
     System.out.println("                     ");
     System.out.println("Eta': 37");
     System.out.println("                     ");
@@ -234,14 +235,14 @@ public class FootballManager2k21{
       randPrezzi(65, 70,7,10,Overall,Prezzo,a);
       randPrezzi(70, 75,7,10,Overall,Prezzo,a);
       randPrezzi(75, 80,12,20,Overall,Prezzo,a);
-      randPrezzi(80, 85,20,35,Overall,Prezzo,a);
-      randPrezzi(85, 90,50,80,Overall,Prezzo,a);
-      randPrezzi(90, 99,85,100,Overall,Prezzo,a);
+      randPrezzi(80, 85,20,40,Overall,Prezzo,a);
+      randPrezzi(85, 90,50,50,Overall,Prezzo,a);
+      randPrezzi(90, 99,85,60,Overall,Prezzo,a);
     }
 
     }
 
-  public static void Tabbella(String[] Giocatori, int[] Prezzo,int Caratteristiche1[],int Caratteristiche2[], int Caratteristiche3[], int[] nRuoli, int[] Overall, Boolean[] disponibilita){
+  public static void Tabella(String[] Giocatori, int[] Prezzo,int Caratteristiche1[],int Caratteristiche2[], int Caratteristiche3[], int[] nRuoli, int[] Overall, Boolean[] disponibilita){
 
     InputStreamReader isr;
     BufferedReader br;
@@ -268,19 +269,19 @@ public class FootballManager2k21{
       switch(pagina){
 
         case 1:
-          System.out.println("                              TUF    POS    RIF    OVL   $$$");
+          System.out.println("                              TUF    POS    RIF    OVR   $$$");
         break;
 
         case 2:
-          System.out.println("                              VEl    CNT    SCI    OVL   $$$");
+          System.out.println("                              VEl    DEF    SCI    OVR   $$$");
         break;
 
         case 3:
-          System.out.println("                              VEl    POT    DIN    OVL   $$$");
+          System.out.println("                              VEl    PAS    DRI    OVR   $$$");
         break;
 
         case 4:
-          System.out.println("                              VEl    POT    DIN    OVL   $$$");
+          System.out.println("                              VEl    POT    DRI    OVR   $$$");
         break;
       }
 
@@ -364,10 +365,10 @@ public class FootballManager2k21{
           }catch(Exception e){System.out.println(e);}
 
           if(a<nRuoli[pagina-1] || a>nRuoli[pagina])
-            System.out.println("Il giocatore richiesto non é presente in questa pagina. Inserire un numero di questa pagina");
+            System.out.println("Il giocatore richiesto non e' presente in questa pagina. Inserire un numero di questa pagina");
 
         }while(a<nRuoli[pagina-1] || a>nRuoli[pagina]);
-        
+
         if(disponibilita[a-1] == true){
           if(budget>=Prezzo[a-1] ){
             System.out.println("Ottimo affare, hai acquistato "+Giocatori[a-1]+" Alla modica cifra di "+Prezzo[a-1]);
