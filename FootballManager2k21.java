@@ -260,12 +260,17 @@ public class FootballManager2k21{
     int s = 0;
     int spazi = 35;
 
+    String[] nomePagine={"Portieri", "Difensori", "Centrocampisti", "Attacanti"};
+    int portieriDc= 1;
+    int difensoriDc= 0;
+    int centrocampistiDc= 0;
+    int attaccantiDc= 0;
+
     do{
 
-      String[] nomePagine={"Portieri", "Difensori", "Centrocampisti", "Attacanti"};
-
       righiDiSpazio(3);
-      System.out.println("Pagina "+(pagina)+" di "+nomePagine.length);
+      System.out.print("Pagina "+(pagina)+" di "+nomePagine.length);
+      giocatoriDaComprare(pagina, portieriDc, difensoriDc, centrocampistiDc, attaccantiDc);
       righiDiSpazio(2);
       System.out.println("                                 "+nomePagine[pagina-1]);
       System.out.println("");
@@ -508,4 +513,82 @@ public class FootballManager2k21{
     System.out.println("Perfetto");
 
   }
+
+  public static void giocatoriDaComprare(int pagina, int portieriDc, int difensoriDc, int centrocampistiDc, int attaccantiDc){
+
+    //dc sta per da comprare
+
+    // i moduli sono : 0) 4-3-3  1) 4-4-2  2) 3-5-2
+    switch(modulo){
+
+      case 0:
+        difensoriDc= 4;
+        centrocampistiDc= 3;
+        attaccantiDc= 3;
+        switchGiocatori(pagina, portieriDc, difensoriDc, centrocampistiDc, attaccantiDc);
+      break;
+
+      case 1:
+
+        difensoriDc= 4;
+        centrocampistiDc= 4;
+        attaccantiDc= 2;
+        switchGiocatori(pagina, portieriDc, difensoriDc, centrocampistiDc, attaccantiDc);
+      break;
+
+      case 2:
+
+        difensoriDc= 3;
+        centrocampistiDc= 5;
+        attaccantiDc= 2;
+        switchGiocatori(pagina, portieriDc, difensoriDc, centrocampistiDc, attaccantiDc);
+      break;
+
+    }
+  }
+
+  public static void switchGiocatori(int pagina, int portieriDc, int difensoriDc, int centrocampistiDc, int attaccantiDc){
+
+      int spazi = 59;
+
+    switch(pagina-1){
+
+        case 0:
+          for (int j=0; j<spazi ; j++ )
+            System.out.print(" ");
+          System.out.println("Portieri da comprare: "+portieriDc );
+        break;
+
+        case 1:
+          for (int j=0; j<spazi; j++ )
+            System.out.print(" ");
+          System.out.println("Difensori da comprare: "+difensoriDc);
+        break;
+
+        case 2:
+          for (int j=0; j< spazi; j++ )
+            System.out.print(" ");
+          System.out.println("Centrocampisti da comprare: "+ centrocampistiDc);
+        break;
+
+        case 3:
+          for (int j=0; j< spazi; j++ )
+            System.out.print(" ");
+          System.out.println("Attacanti da comprare: "+ attaccantiDc);
+        break;
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
