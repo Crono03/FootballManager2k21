@@ -9,7 +9,7 @@ public class FootballManager2k21{
   public static String nomeSquadra;
   public static int modulo = -1;
   public static String[] nModuli={" 4-3-3", "4-4-2", "3-5-2"};
-  public static int[] squadra;
+  public static int[] squadra=new int[11];
   //variabili globali
 
   public static void main(String[] args) {
@@ -84,7 +84,7 @@ public class FootballManager2k21{
 
     dormi(2);
 
-    clearScreen();
+    refreshScreen();
 
     insModulo ();
 
@@ -132,7 +132,8 @@ public class FootballManager2k21{
 
     System.out.println(nomeAllenatore+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+" Ufficio "+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"Budget: "+budget+" Mln"+"\n");
     System.out.println("Squadra: "+nomeSquadra+"\n");
-    System.out.println("Modulo:" +nModuli[modulo]+"\n");
+    if(modulo != -1)
+      System.out.println("Modulo:" +nModuli[modulo]+"\n");
 
   }
 
@@ -278,7 +279,7 @@ public class FootballManager2k21{
     int difensoriDc= 0;
     int centrocampistiDc= 0;
     int attaccantiDc= 0;
-    int[] giocatoriDc={1, 0, 0, 0}
+    int[] giocatoriDc={1, 0, 0, 0};
 
     do{
 
@@ -286,7 +287,7 @@ public class FootballManager2k21{
 
       System.out.print("Pagina "+(pagina)+" di "+nomeRuoli.length);
 
-      giocatoriDaCompraredc(pagina, giocatoriDc);
+      giocatoriDaComprare(pagina, giocatoriDc, nomeRuoli);
 
       righiDiSpazio(2);
 
@@ -514,7 +515,7 @@ public class FootballManager2k21{
   }
 
 
-  public static void giocatoriDaComprare(int pagina, int[] giocatoriDc){
+  public static void giocatoriDaComprare(int pagina, int[] giocatoriDc, String[] nomeRuoli){
 
     //dc sta per da comprare
 
@@ -525,7 +526,7 @@ public class FootballManager2k21{
         giocatoriDc[1]= 4;
         giocatoriDc[2]= 3;
         giocatoriDc[3]= 3;
-        stampaGiocatoridc(pagina, giocatoriDc);
+        stampaGiocatoridc(pagina, giocatoriDc, nomeRuoli);
       break;
 
       case 1:
@@ -533,7 +534,7 @@ public class FootballManager2k21{
           giocatoriDc[1]= 4;
           giocatoriDc[2]= 4;
           giocatoriDc[3]= 2;
-          stampaGiocatoridc(pagina, giocatoriDc);
+          stampaGiocatoridc(pagina, giocatoriDc, nomeRuoli);
       break;
 
       case 2:
@@ -541,14 +542,14 @@ public class FootballManager2k21{
         giocatoriDc[1]= 3;
         giocatoriDc[2]= 5;
         giocatoriDc[3]= 2;
-        stampaGiocatoridc(pagina, giocatoriDc);
+        stampaGiocatoridc(pagina, giocatoriDc, nomeRuoli);
       break;
 
     }
   }
 
 
-  public static void stampaGiocatoridc(int pagina,int[] giocatoriDc){
+  public static void stampaGiocatoridc(int pagina,int[] giocatoriDc,String[] nomeRuoli){
 
       int spazi = 59;
 
@@ -557,64 +558,50 @@ public class FootballManager2k21{
       System.out.println(nomeRuoli+" da comprare: "+giocatoriDc[pagina-1] );
 
     }
-  }
+    public static void statsInAlto(int pagina, int spazi){
+
+        switch(pagina){
+
+          case 1:
+
+            for (int j=0; j< (spazi+3); j++ )
+              System.out.print(" ");
+            System.out.println("TUF    POS    RIF    OVR    $$$");
+
+          break;
+
+          case 2:
+
+            for (int j=0; j< (spazi+3); j++ )
+              System.out.print(" ");
+            System.out.println("VEl    DEF    SCI    OVR    $$$");
+
+          break;
+
+          case 3:
+            for (int j=0; j< (spazi+3); j++ )
+              System.out.print(" ");
+            System.out.println("VEl    PAS    DRI    OVR    $$$");
+          break;
+
+          case 4:
+            for (int j=0; j< (spazi+3); j++ )
+              System.out.print(" ");
+            System.out.println("VEl    POT    DRI    OVR    $$$");
+          break;
+        }
 
 
-  public static void statsInAlto(int pagina, int spazi){
-
-      switch(pagina){
-
-        case 1:
-
-          for (int j=0; j< (spazi+3); j++ )
-            System.out.print(" ");
-          System.out.println("TUF    POS    RIF    OVR    $$$");
-
-        break;
-
-        case 2:
-
-          for (int j=0; j< (spazi+3); j++ )
-            System.out.print(" ");
-          System.out.println("VEl    DEF    SCI    OVR    $$$");
-
-        break;
-
-        case 3:
-          for (int j=0; j< (spazi+3); j++ )
-            System.out.print(" ");
-          System.out.println("VEl    PAS    DRI    OVR    $$$");
-        break;
-
-        case 4:
-          for (int j=0; j< (spazi+3); j++ )
-            System.out.print(" ");
-          System.out.println("VEl    POT    DRI    OVR    $$$");
-        break;
-      }
-
-
-  }
-
-  public static void riempiSquadra(int a) {
-
-    int i =0;
-
-    while(squadra[i] == -1){
-      i++
     }
 
-    squadra[i] = a;
+    public static void riempiSquadra(int a) {
+
+      int i =0;
+
+      while(squadra[i] == -1){
+        i++;
+      }
+
+      squadra[i] = a;
+    }
   }
-
-
-
-
-
-
-
-
-
-
-
-}
