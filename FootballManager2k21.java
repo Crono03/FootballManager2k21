@@ -134,6 +134,7 @@ public class FootballManager2k21{
     System.out.println("Squadra: "+nomeSquadra+"\n");
     if(modulo != -1)
     System.out.println("Modulo:" +nModuli[modulo]+"\n");
+    righiDiSpazio(1);
 
   }
 
@@ -283,8 +284,6 @@ public class FootballManager2k21{
 
     do{
 
-      righiDiSpazio(1);
-
       System.out.print("Pagina "+(pagina)+" di "+nomeRuoli.length);
 
       giocatoriDaComprare(pagina, giocatoriDc, nomeRuoli);
@@ -400,10 +399,19 @@ public class FootballManager2k21{
         }else
         System.out.println("Hai acquistato il massimo di giocaori per questo ruolo");
 
+        if ((giocatoriDc[0]+giocatoriDc[1]+giocatoriDc[2]+giocatoriDc[3]) == 0){
+          System.out.println("Bene! Hai finito di formare la tua squadra");
+          c = false;
+        }
       }
       dormi(1);
       refreshScreen();
     }while(c == true);
+
+    System.out.println("Adesso, per mettere alla prova la tua squadra di leggende, essi disputeranno una partita di riscaldamento contro \"i Piconari\" ");
+    dormi(2);
+
+
   }
 
 
@@ -604,4 +612,9 @@ public class FootballManager2k21{
     squadra[i] = a;
   }
 
+  public static void partitaDiRiscaldamento(){
+    String[] nSquadraAvversaria={"Alessandro Arcidiacono","Luis Mazza","Caterina Mazza","Fabio Arcidiacono","Eugenio Picone","Daniela Picone","Antonio tropi","Sasa' Arcidiacono","Mariangela Mazza","Luigi Picone","Angela Picone"}
+    int overallAvv=randomizzaInt(85,75);
+
+  }
 }
