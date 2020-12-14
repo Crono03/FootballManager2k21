@@ -50,7 +50,7 @@ public class FootballManager2k21{
     prezzi(Prezzo, Caratteristiche1, Caratteristiche2, Caratteristiche3, Overall);
 
     for (int i=0; i<Giocatori.length;i++)
-      disponibilita[i]=true;
+    disponibilita[i]=true;
 
     for (int a=0;a<squadra.length ;a++ ) {
       squadra[a]=-1;
@@ -133,7 +133,7 @@ public class FootballManager2k21{
     System.out.println(nomeAllenatore+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+" Ufficio "+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"\t"+"Budget: "+budget+" Mln"+"\n");
     System.out.println("Squadra: "+nomeSquadra+"\n");
     if(modulo != -1)
-      System.out.println("Modulo:" +nModuli[modulo]+"\n");
+    System.out.println("Modulo:" +nModuli[modulo]+"\n");
 
   }
 
@@ -165,7 +165,7 @@ public class FootballManager2k21{
 
     dormi(1);
     System.out.println("\t"+"\t"+"\t"+"\t"+"\t"+"FootballManager2k21");
-  righiDiSpazio(4);
+    righiDiSpazio(4);
     dormi(2);
     System.out.println("Created By C4zz1 Studios Ltd.");
     dormi(2);
@@ -194,9 +194,9 @@ public class FootballManager2k21{
 
         do{
 
-        nome = br.readLine();
+          nome = br.readLine();
 
-        if(nome.equals(""))
+          if(nome.equals(""))
           System.out.println("Per favore inserire un nome");
 
         }while(nome.equals(""));
@@ -206,11 +206,11 @@ public class FootballManager2k21{
         conferma = br.readLine();
 
         if (conferma.equals("Y") || conferma.equals("y") )
-          correggiuto = true;
+        correggiuto = true;
 
         else if (conferma.equals("N") || conferma.equals("n") )
 
-          System.out.println("Per favore, re-inserisci il nome ");
+        System.out.println("Per favore, re-inserisci il nome ");
 
         else {
 
@@ -224,7 +224,7 @@ public class FootballManager2k21{
 
           }else
 
-            System.out.println("Per favore, re-inserisci il nome ");
+          System.out.println("Per favore, re-inserisci il nome ");
 
         }
 
@@ -259,7 +259,7 @@ public class FootballManager2k21{
       randPrezzi(90, 99,85,60,Overall,Prezzo,a);
     }
 
-    }
+  }
 
 
   public static void mercato(String[] Giocatori, int[] Prezzo,int Caratteristiche1[],int Caratteristiche2[], int Caratteristiche3[], int[] nRuoli, int[] Overall, Boolean[] disponibilita){
@@ -283,7 +283,7 @@ public class FootballManager2k21{
 
     do{
 
-      righiDiSpazio(3);
+      righiDiSpazio(1);
 
       System.out.print("Pagina "+(pagina)+" di "+nomeRuoli.length);
 
@@ -302,22 +302,22 @@ public class FootballManager2k21{
         int sb = spazi-Giocatori[i].length();
 
         if (i>=9 )
-          sb-=1;
+        sb-=1;
 
         if(i >= 99)
-          System.out.print((i+1)+" "+ Giocatori[i]);
+        System.out.print((i+1)+" "+ Giocatori[i]);
         else
-          System.out.print((i+1)+"  "+ Giocatori[i]);
+        System.out.print((i+1)+"  "+ Giocatori[i]);
 
         for (int j=0; j< sb; j++ )
-          System.out.print(" ");
+        System.out.print(" ");
 
         System.out.print(Caratteristiche1[i]+"     "+Caratteristiche2[i]+"     "+Caratteristiche3[i]+"     "+Overall[i]+"     "+Prezzo[i]+"\t");
 
         if(disponibilita[i] == true )
-          System.out.println("Disponibile ");
+        System.out.println("Disponibile ");
         else
-          System.out.println("Non Disponibile");
+        System.out.println("Non Disponibile");
 
         //pagina+=frecce();
       }
@@ -331,13 +331,13 @@ public class FootballManager2k21{
 
         try{
 
-  				String xStringa=br.readLine();
-  				s= Integer.parseInt(xStringa);
+          String xStringa=br.readLine();
+          s= Integer.parseInt(xStringa);
 
         }catch(Exception e){System.out.println(e);}
 
         if (s< 1 || s> 2)
-          System.out.println("Per favore, inserire SOLO il numero della scelta");
+        System.out.println("Per favore, inserire SOLO il numero della scelta");
 
       }while(s< 1 || s> 2);
 
@@ -350,15 +350,15 @@ public class FootballManager2k21{
 
           try{
 
-      			String xStringa=br.readLine();
-      			t= Integer.parseInt(xStringa);
+            String xStringa=br.readLine();
+            t= Integer.parseInt(xStringa);
 
             if (t>0 && t<5 ){
               pagina = t;
               refreshScreen();
             }
             else
-              System.out.println("Attenzione! Le pagine vanno da 1 a 4. Inserire un valore valido.");
+            System.out.println("Attenzione! Le pagine vanno da 1 a 4. Inserire un valore valido.");
 
           }catch(Exception e){System.out.println(e);}
 
@@ -372,20 +372,20 @@ public class FootballManager2k21{
 
           try{
 
-      			String xStringa=br.readLine();
-      			a = Integer.parseInt(xStringa);
+            String xStringa=br.readLine();
+            a = Integer.parseInt(xStringa);
 
           }catch(Exception e){System.out.println(e);}
 
           if(a<nRuoli[pagina-1] || a>nRuoli[pagina])
-            System.out.println("Il giocatore richiesto non e' presente in questa pagina. Inserire un numero di questa pagina");
+          System.out.println("Il giocatore richiesto non e' presente in questa pagina. Inserire un numero di questa pagina");
 
         }while(a<nRuoli[pagina-1] || a>nRuoli[pagina]);
         if (  giocatoriDc[(pagina-1)]>0 ){
 
           if(disponibilita[a-1] == true){
             if(budget>=Prezzo[a-1] ){
-              System.out.println("Ottimo affare, hai acquistato "+Giocatori[a-1]+" Alla modica cifra di "+Prezzo[a-1]);
+              System.out.println("Ottimo affare, hai acquistato "+Giocatori[a-1]+" Alla modica cifra di "+Prezzo[a-1]+" Mln");
               budget=budget-Prezzo[a-1];
               giocatoriDc[(pagina-1)]-=1;
               disponibilita[a-1]= false;
@@ -393,12 +393,12 @@ public class FootballManager2k21{
 
             }
             else
-              System.out.println("Non hai abbastanza soldi");
+            System.out.println("Non hai abbastanza soldi");
           }
           else
-            System.out.println("Giocatore già acquistato");
+          System.out.println("Giocatore gia' acquistato");
         }else
-          System.out.println("Hai acquistato il massimo di giocaori per questo ruolo");
+        System.out.println("Hai acquistato il massimo di giocaori per questo ruolo");
 
       }
       dormi(1);
@@ -409,14 +409,14 @@ public class FootballManager2k21{
 
   /*public static int frecce(){
 
-    double tastoP= 0;
-    tastoP= KeyEvent.getKeyCode();
+  double tastoP= 0;
+  tastoP= KeyEvent.getKeyCode();
 
-    if(  tastoP ==KeyEvent.VK_RIGHT)
-      return 1;
-    if(  tastoP ==KeyEvent.VK_LEFT)
-      return -1;
-  }*/ //gue gue gue gue
+  if(  tastoP ==KeyEvent.VK_RIGHT)
+  return 1;
+  if(  tastoP ==KeyEvent.VK_LEFT)
+  return -1;
+}*/ //gue gue gue gue
 
 
   public static void creaStatistiche(int Caratteristiche1[],int Caratteristiche2[], int Caratteristiche3[]){
@@ -463,7 +463,7 @@ public class FootballManager2k21{
   public static void righiDiSpazio(int s){
 
     for(int i= 0; i<=s;i++)
-      System.out.println("");
+    System.out.println("");
 
   }
 
@@ -490,7 +490,7 @@ public class FootballManager2k21{
       }catch(Exception e){System.out.println(e);}
 
       if (modulo<0 || modulo> 2 )
-        System.out.println("Perfavore, inserire un numero valido");
+      System.out.println("Perfavore, inserire un numero valido");
       else{
         System.out.println("Sei sicuro di volere il "+nModuli[modulo]+" ? Dovrai tenertelo per tutta la stagione. Y/N");
 
@@ -501,11 +501,11 @@ public class FootballManager2k21{
         }catch(Exception e){System.out.println(e);}
 
         if (conferma.equals("Y") || conferma.equals("y") )
-          m = true;
+        m = true;
 
         else if (conferma.equals("N") || conferma.equals("n") )
 
-          System.out.println("Per favore, scegli nuovamente il modulo ");
+        System.out.println("Per favore, scegli nuovamente il modulo ");
       }
 
     }while(m == false );
@@ -523,26 +523,26 @@ public class FootballManager2k21{
     switch(modulo){
 
       case 0:
-        giocatoriDc[1]= 4;
-        giocatoriDc[2]= 3;
-        giocatoriDc[3]= 3;
-        stampaGiocatoridc(pagina, giocatoriDc, nomeRuoli);
+      giocatoriDc[1]= 4;
+      giocatoriDc[2]= 3;
+      giocatoriDc[3]= 3;
+      stampaGiocatoridc(pagina, giocatoriDc, nomeRuoli);
       break;
 
       case 1:
 
-          giocatoriDc[1]= 4;
-          giocatoriDc[2]= 4;
-          giocatoriDc[3]= 2;
-          stampaGiocatoridc(pagina, giocatoriDc, nomeRuoli);
+      giocatoriDc[1]= 4;
+      giocatoriDc[2]= 4;
+      giocatoriDc[3]= 2;
+      stampaGiocatoridc(pagina, giocatoriDc, nomeRuoli);
       break;
 
       case 2:
 
-        giocatoriDc[1]= 3;
-        giocatoriDc[2]= 5;
-        giocatoriDc[3]= 2;
-        stampaGiocatoridc(pagina, giocatoriDc, nomeRuoli);
+      giocatoriDc[1]= 3;
+      giocatoriDc[2]= 5;
+      giocatoriDc[3]= 2;
+      stampaGiocatoridc(pagina, giocatoriDc, nomeRuoli);
       break;
 
     }
@@ -551,57 +551,57 @@ public class FootballManager2k21{
 
   public static void stampaGiocatoridc(int pagina,int[] giocatoriDc,String[] nomeRuoli){
 
-      int spazi = 59;
+    int spazi = 59;
 
-      for (int j=0; j<spazi ; j++ )
-        System.out.print(" ");
-      System.out.println(nomeRuoli+" da comprare: "+giocatoriDc[pagina-1] );
+    for (int j=0; j<spazi ; j++ )
+    System.out.print(" ");
+    System.out.println(nomeRuoli[pagina-1]+" da comprare: "+giocatoriDc[pagina-1] );
 
-    }
-    public static void statsInAlto(int pagina, int spazi){
+  }
 
-        switch(pagina){
+  public static void statsInAlto(int pagina, int spazi){
 
-          case 1:
+    switch(pagina){
 
-            for (int j=0; j< (spazi+3); j++ )
-              System.out.print(" ");
-            System.out.println("TUF    POS    RIF    OVR    $$$");
+      case 1:
 
-          break;
+      for (int j=0; j< (spazi+3); j++ )
+      System.out.print(" ");
+      System.out.println("TUF    POS    RIF    OVR    $$$");
 
-          case 2:
+      break;
 
-            for (int j=0; j< (spazi+3); j++ )
-              System.out.print(" ");
-            System.out.println("VEl    DEF    SCI    OVR    $$$");
+      case 2:
 
-          break;
+      for (int j=0; j< (spazi+3); j++ )
+      System.out.print(" ");
+      System.out.println("VEl    DEF    SCI    OVR    $$$");
 
-          case 3:
-            for (int j=0; j< (spazi+3); j++ )
-              System.out.print(" ");
-            System.out.println("VEl    PAS    DRI    OVR    $$$");
-          break;
+      break;
 
-          case 4:
-            for (int j=0; j< (spazi+3); j++ )
-              System.out.print(" ");
-            System.out.println("VEl    POT    DRI    OVR    $$$");
-          break;
-        }
+      case 3:
+      for (int j=0; j< (spazi+3); j++ )
+      System.out.print(" ");
+      System.out.println("VEl    PAS    DRI    OVR    $$$");
+      break;
 
-
-    }
-
-    public static void riempiSquadra(int a) {
-
-      int i =0;
-
-      while(squadra[i] == -1){
-        i++;
-      }
-
-      squadra[i] = a;
+      case 4:
+      for (int j=0; j< (spazi+3); j++ )
+      System.out.print(" ");
+      System.out.println("VEl    POT    DRI    OVR    $$$");
+      break;
     }
   }
+
+  public static void riempiSquadra(int a) {
+
+    int i =0;
+
+    while(squadra[i] != -1){
+      i++;
+    }
+
+    squadra[i] = a;
+  }
+
+}
