@@ -52,8 +52,7 @@ public class FootballManager2k21{
       disponibilita[i]=true;
 
 
-    System.out.println("Benvenuto in Football Manager 2k21, la miglior simulazione calcistica della storia, non come quei nabbi di EA Sports ");
-    System.out.println("");
+    System.out.println("Benvenuto in Football Manager 2k21, la miglior simulazione calcistica della storia, non come quei nabbi di EA Sports "+"\n");
     dormi(1);
     System.out.println("Inserisci il tuo nome da allenatore:");
     System.out.print("Dr.  ");
@@ -101,11 +100,13 @@ public class FootballManager2k21{
 
   }
 
+
   public static void randPrezzi(int min, int max, int prezzobase, int modifier,int[] Overall, int[]Prezzo, int a){
     if(Overall[a]>=min && Overall[a]<=max){
       Prezzo[a]=(prezzobase+randomizzaInt(modifier,1));
     }
   }
+
 
   public static void clearScreen() {
 
@@ -118,6 +119,7 @@ public class FootballManager2k21{
 
   }
 
+
   public static void refreshScreen(){
 
     clearScreen();
@@ -127,6 +129,7 @@ public class FootballManager2k21{
     System.out.println("Modulo:" +nModuli[modulo]+"\n");
 
   }
+
 
   public static void contratto(){
 
@@ -143,6 +146,7 @@ public class FootballManager2k21{
     System.out.println("Durata Contratto : Quinquennale"+"\n");
 
   }
+
 
   public static void Intro() {
 
@@ -164,6 +168,7 @@ public class FootballManager2k21{
     for (int i=0; i<8; i++ )
     System.out.println("");
   }
+
 
   public static String insString(){
 
@@ -223,6 +228,7 @@ public class FootballManager2k21{
     return nome;
   }
 
+
   public static int randomizzaInt(int max, int min){
     int range=max-min+1;
     return (int)(Math.random() * range) + min;
@@ -247,6 +253,7 @@ public class FootballManager2k21{
     }
 
     }
+
 
   public static void mercato(String[] Giocatori, int[] Prezzo,int Caratteristiche1[],int Caratteristiche2[], int Caratteristiche3[], int[] nRuoli, int[] Overall, Boolean[] disponibilita){
 
@@ -411,6 +418,7 @@ public class FootballManager2k21{
     }while(c == true);
   }
 
+
   /*public static int frecce(){
 
     double tastoP= 0;
@@ -422,6 +430,7 @@ public class FootballManager2k21{
       return -1;
   }*/ //gue gue gue gue
 
+
   public static void creaStatistiche(int Caratteristiche1[],int Caratteristiche2[], int Caratteristiche3[]){
     final int minStat=50;
     final int maxStat=99;
@@ -431,6 +440,7 @@ public class FootballManager2k21{
       Caratteristiche3[a]=randomizzaInt(maxStat, minStat);
     }
   }
+
 
   public static void creaGiocator1(String Giocatori[]){
     String[]Nomi={"Lukabboloy","Sean","TonyFantino","Guesus","AlexObesoNano","Deiso","Carolo","Marvin","EvilKann","Carl","Bernardo","Joele","Gabe","William","Marco","'Ntuoni","Juanni","Sarpeni","Saro","Gregorio","Mariello","Salvatore","Sandro","Frode","Gianni","Moe","Dark","Michele","Pakalu","Pinzkeberg"};
@@ -461,12 +471,14 @@ public class FootballManager2k21{
 
   }
 
+
   public static void righiDiSpazio(int s){
 
     for(int i= 0; i<=s;i++)
       System.out.println("");
 
   }
+
 
   public static void insModulo(){
 
@@ -514,6 +526,7 @@ public class FootballManager2k21{
 
   }
 
+
   public static void giocatoriDaComprare(int pagina, int portieriDc, int difensoriDc, int centrocampistiDc, int attaccantiDc){
 
     //dc sta per da comprare
@@ -546,6 +559,7 @@ public class FootballManager2k21{
 
     }
   }
+
 
   public static void switchGiocatori(int pagina, int portieriDc, int difensoriDc, int centrocampistiDc, int attaccantiDc){
 
