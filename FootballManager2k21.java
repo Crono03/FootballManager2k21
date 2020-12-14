@@ -9,6 +9,7 @@ public class FootballManager2k21{
   public static String nomeSquadra;
   public static int modulo = -1;
   public static String[] nModuli={" 4-3-3", "4-4-2", "3-5-2"};
+  public static int[] squadra;
   //variabili globali
 
   public static void main(String[] args) {
@@ -50,6 +51,11 @@ public class FootballManager2k21{
 
     for (int i=0; i<Giocatori.length;i++)
       disponibilita[i]=true;
+
+    for (int a=0;a<squadra.length ;a++ ) {
+      squadra[a]=-1;
+
+    }
 
 
     System.out.println("Benvenuto in Football Manager 2k21, la miglior simulazione calcistica della storia, non come quei nabbi di EA Sports "+"\n");
@@ -267,53 +273,28 @@ public class FootballManager2k21{
     int s = 0;
     int spazi = 35;
 
-    String[] nomePagine={"Portieri", "Difensori", "Centrocampisti", "Attacanti"};
+    String[] nomeRuoli={"Portieri", "Difensori", "Centrocampisti", "Attacanti"};
     int portieriDc= 1;
     int difensoriDc= 0;
     int centrocampistiDc= 0;
     int attaccantiDc= 0;
+    int[] giocatoriDc={1, 0, 0, 0}
 
     do{
 
       righiDiSpazio(3);
-      System.out.print("Pagina "+(pagina)+" di "+nomePagine.length);
-      giocatoriDaComprare(pagina, portieriDc, difensoriDc, centrocampistiDc, attaccantiDc);
+
+      System.out.print("Pagina "+(pagina)+" di "+nomeRuoli.length);
+
+      giocatoriDaCompraredc(pagina, giocatoriDc);
+
       righiDiSpazio(2);
-      System.out.println("                                 "+nomePagine[pagina-1]);
-      System.out.println("");
 
-      switch(pagina){
+      System.out.println("                                 "+nomeRuoli[pagina-1]);
 
-        case 1:
+      righiDiSpazio(2);
 
-          for (int j=0; j< (spazi+3); j++ )
-            System.out.print(" ");
-          System.out.println("TUF    POS    RIF    OVR    $$$");
-
-        break;
-
-        case 2:
-
-          for (int j=0; j< (spazi+3); j++ )
-            System.out.print(" ");
-          System.out.println("VEl    DEF    SCI    OVR    $$$");
-
-        break;
-
-        case 3:
-          for (int j=0; j< (spazi+3); j++ )
-            System.out.print(" ");
-          System.out.println("VEl    PAS    DRI    OVR    $$$");
-        break;
-
-        case 4:
-          for (int j=0; j< (spazi+3); j++ )
-            System.out.print(" ");
-          System.out.println("VEl    POT    DRI    OVR    $$$");
-        break;
-      }
-
-      System.out.println("");
+      statsInAlto(pagina, spazi);
 
       for(int i=nRuoli[pagina-1]; i<nRuoli[pagina]; i++){
 
@@ -399,18 +380,24 @@ public class FootballManager2k21{
             System.out.println("Il giocatore richiesto non e' presente in questa pagina. Inserire un numero di questa pagina");
 
         }while(a<nRuoli[pagina-1] || a>nRuoli[pagina]);
+        if (  giocatoriDc[(pagina-1)]>0 ){
 
-        if(disponibilita[a-1] == true){
-          if(budget>=Prezzo[a-1] ){
-            System.out.println("Ottimo affare, hai acquistato "+Giocatori[a-1]+" Alla modica cifra di "+Prezzo[a-1]);
-            budget=budget-Prezzo[a-1];
-            disponibilita[a-1]= false;
+          if(disponibilita[a-1] == true){
+            if(budget>=Prezzo[a-1] ){
+              System.out.println("Ottimo affare, hai acquistato "+Giocatori[a-1]+" Alla modica cifra di "+Prezzo[a-1]);
+              budget=budget-Prezzo[a-1];
+              giocatoriDc[(pagina-1)]-=1;
+              disponibilita[a-1]= false;
+              riempiSquadra(a);
+
+            }
+            else
+              System.out.println("Non hai abbastanza soldi");
           }
           else
-            System.out.println("Non hai abbastanza soldi");
-        }
-        else
-          System.out.println("Giocatore già acquistato");
+            System.out.println("Giocatore già acquistato");
+        }else
+          System.out.println("Hai acquistato il massimo di giocaori per questo ruolo");
 
       }
       dormi(1);
@@ -527,7 +514,7 @@ public class FootballManager2k21{
   }
 
 
-  public static void giocatoriDaComprare(int pagina, int portieriDc, int difensoriDc, int centrocampistiDc, int attaccantiDc){
+  public static void giocatoriDaComprare(int pagina, int[] giocatoriDc){
 
     //dc sta per da comprare
 
@@ -535,65 +522,90 @@ public class FootballManager2k21{
     switch(modulo){
 
       case 0:
-        difensoriDc= 4;
-        centrocampistiDc= 3;
-        attaccantiDc= 3;
-        switchGiocatori(pagina, portieriDc, difensoriDc, centrocampistiDc, attaccantiDc);
+        giocatoriDc[1]= 4;
+        giocatoriDc[2]= 3;
+        giocatoriDc[3]= 3;
+        stampaGiocatoridc(pagina, giocatoriDc);
       break;
 
       case 1:
 
-        difensoriDc= 4;
-        centrocampistiDc= 4;
-        attaccantiDc= 2;
-        switchGiocatori(pagina, portieriDc, difensoriDc, centrocampistiDc, attaccantiDc);
+          giocatoriDc[1]= 4;
+          giocatoriDc[2]= 4;
+          giocatoriDc[3]= 2;
+          stampaGiocatoridc(pagina, giocatoriDc);
       break;
 
       case 2:
 
-        difensoriDc= 3;
-        centrocampistiDc= 5;
-        attaccantiDc= 2;
-        switchGiocatori(pagina, portieriDc, difensoriDc, centrocampistiDc, attaccantiDc);
+        giocatoriDc[1]= 3;
+        giocatoriDc[2]= 5;
+        giocatoriDc[3]= 2;
+        stampaGiocatoridc(pagina, giocatoriDc);
       break;
 
     }
   }
 
 
-  public static void switchGiocatori(int pagina, int portieriDc, int difensoriDc, int centrocampistiDc, int attaccantiDc){
+  public static void stampaGiocatoridc(int pagina,int[] giocatoriDc){
 
       int spazi = 59;
 
-    switch(pagina-1){
+      for (int j=0; j<spazi ; j++ )
+        System.out.print(" ");
+      System.out.println(nomeRuoli+" da comprare: "+giocatoriDc[pagina-1] );
 
-        case 0:
-          for (int j=0; j<spazi ; j++ )
-            System.out.print(" ");
-          System.out.println("Portieri da comprare: "+portieriDc );
-        break;
-
-        case 1:
-          for (int j=0; j<spazi; j++ )
-            System.out.print(" ");
-          System.out.println("Difensori da comprare: "+difensoriDc);
-        break;
-
-        case 2:
-          for (int j=0; j< spazi; j++ )
-            System.out.print(" ");
-          System.out.println("Centrocampisti da comprare: "+ centrocampistiDc);
-        break;
-
-        case 3:
-          for (int j=0; j< spazi; j++ )
-            System.out.print(" ");
-          System.out.println("Attacanti da comprare: "+ attaccantiDc);
-        break;
     }
   }
 
 
+  public static void statsInAlto(int pagina, int spazi){
+
+      switch(pagina){
+
+        case 1:
+
+          for (int j=0; j< (spazi+3); j++ )
+            System.out.print(" ");
+          System.out.println("TUF    POS    RIF    OVR    $$$");
+
+        break;
+
+        case 2:
+
+          for (int j=0; j< (spazi+3); j++ )
+            System.out.print(" ");
+          System.out.println("VEl    DEF    SCI    OVR    $$$");
+
+        break;
+
+        case 3:
+          for (int j=0; j< (spazi+3); j++ )
+            System.out.print(" ");
+          System.out.println("VEl    PAS    DRI    OVR    $$$");
+        break;
+
+        case 4:
+          for (int j=0; j< (spazi+3); j++ )
+            System.out.print(" ");
+          System.out.println("VEl    POT    DRI    OVR    $$$");
+        break;
+      }
+
+
+  }
+
+  public static void riempiSquadra(int a) {
+
+    int i =0;
+
+    while(squadra[i] == -1){
+      i++
+    }
+
+    squadra[i] = a;
+  }
 
 
 
