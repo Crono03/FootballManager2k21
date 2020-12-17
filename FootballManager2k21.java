@@ -43,7 +43,7 @@ public class FootballManager2k21{
     int[] nRuoli={0, nPortieri,nDifensori+nPortieri,nCentrocampisti+nDifensori+nPortieri,nAttaccanti+nCentrocampisti+nDifensori+nPortieri};
     //contiene gli step del vettore in cui cambiano i ruoli dei giocatori
 
-    //Intro();
+    Intro();
 
     creaGiocator1(Giocatori);
     creaStatistiche(Caratteristiche1, Caratteristiche2, Caratteristiche3);
@@ -91,6 +91,14 @@ public class FootballManager2k21{
     refreshScreen();
 
     mercato(Giocatori, Prezzo, Caratteristiche1 , Caratteristiche2,  Caratteristiche3,  nRuoli, Overall, disponibilita);
+
+    righiDiSpazio(2);
+
+    System.out.println("Adesso, per mettere alla prova la tua squadra di leggende, essi disputeranno una partita di riscaldamento contro \"i Piconari\" ");
+
+    dormi(2);
+
+    partitaDiRiscaldamento(Giocatori, Overall);
 
 
   }
@@ -276,17 +284,17 @@ public class FootballManager2k21{
     int spazi = 35;
 
     String[] nomeRuoli={"Portieri", "Difensori", "Centrocampisti", "Attacanti"};
-    int portieriDc= 1;
-    int difensoriDc= 0;
-    int centrocampistiDc= 0;
-    int attaccantiDc= 0;
+
     int[] giocatoriDc={1, 0, 0, 0};
+
+    giocatoriDaComprare(pagina, giocatoriDc, nomeRuoli);
+
 
     do{
 
       System.out.print("Pagina "+(pagina)+" di "+nomeRuoli.length);
 
-      giocatoriDaComprare(pagina, giocatoriDc, nomeRuoli);
+      stampaGiocatoridc(pagina, giocatoriDc, nomeRuoli);
 
       righiDiSpazio(2);
 
@@ -385,9 +393,13 @@ public class FootballManager2k21{
           if(disponibilita[a-1] == true){
             if(budget>=Prezzo[a-1] ){
               System.out.println("Ottimo affare, hai acquistato "+Giocatori[a-1]+" Alla modica cifra di "+Prezzo[a-1]+" Mln");
+
               budget=budget-Prezzo[a-1];
-              giocatoriDc[(pagina-1)]-=1;
+
+              giocatoriDc[(pagina-1)] = giocatoriDc[(pagina-1)] - 1 ;
+
               disponibilita[a-1]= false;
+
               riempiSquadra(a);
 
             }
@@ -407,10 +419,6 @@ public class FootballManager2k21{
       dormi(1);
       refreshScreen();
     }while(c == true);
-
-    System.out.println("Adesso, per mettere alla prova la tua squadra di leggende, essi disputeranno una partita di riscaldamento contro \"i Piconari\" ");
-    dormi(2);
-
 
   }
 
@@ -534,7 +542,6 @@ public class FootballManager2k21{
       giocatoriDc[1]= 4;
       giocatoriDc[2]= 3;
       giocatoriDc[3]= 3;
-      stampaGiocatoridc(pagina, giocatoriDc, nomeRuoli);
       break;
 
       case 1:
@@ -542,7 +549,6 @@ public class FootballManager2k21{
       giocatoriDc[1]= 4;
       giocatoriDc[2]= 4;
       giocatoriDc[3]= 2;
-      stampaGiocatoridc(pagina, giocatoriDc, nomeRuoli);
       break;
 
       case 2:
@@ -550,7 +556,7 @@ public class FootballManager2k21{
       giocatoriDc[1]= 3;
       giocatoriDc[2]= 5;
       giocatoriDc[3]= 2;
-      stampaGiocatoridc(pagina, giocatoriDc, nomeRuoli);
+
       break;
 
     }
@@ -612,9 +618,47 @@ public class FootballManager2k21{
     squadra[i] = a;
   }
 
-  public static void partitaDiRiscaldamento(){
-    String[] nSquadraAvversaria={"Alessandro Arcidiacono","Luis Mazza","Caterina Mazza","Fabio Arcidiacono","Eugenio Picone","Daniela Picone","Antonio tropi","Sasa' Arcidiacono","Mariangela Mazza","Luigi Picone","Angela Picone"}
+  public static void partitaDiRiscaldamento(String[] Giocatori, int[] Overall){
+    String[] nSquadraAvversaria={"Alessandro Arcidiacono","Luis Mazza","Caterina Mazza","Fabio Arcidiacono","Eugenio Picone","Daniela Picone","Antonio tropi","Sasa' Arcidiacono","Mariangela Mazza","Luigi Picone","Angela Picone"};
     int overallAvv=randomizzaInt(85,75);
+    int overallsquadra= 0;
 
+
+    righiDiSpazio(2);
+
+    for (int i=0; i<squadra.length ;i++ ) {
+      int spazi= 50;
+
+      overallsquadra += Overall[squadra[i]];
+      spazi-=Giocatori[squadra[i]].length();
+
+      System.out.print(Giocatori[squadra[i]]);
+
+      for (int j=0;j<spazi ;j++ ) {
+
+        System.out.print(" ");
+
+        if(i == 5 && j == 18){
+          System.out.print(" VS ");
+          spazi-=4;
+        }
+
+
+      }
+      System.out.println(nSquadraAvversaria[i]);
+
+    }
+
+    overallsquadra/=squadra.length;
+
+    righiDiSpazio(2);
+
+    if(overallsquadra>overallAvv)
+      System.out.println("Complimenti! Sei riuscito nell'arduo compito di battere i Piconari!");
+    else if(overallAvv>overallsquadra)
+      System.out.println("Mi dispiace, ma i Piconari ti hanno Asfaltato!");
+      else if(overallsquadra == overallAvv)
+          System.out.println("La partita é finita in un pareggio. Wow");
   }
+
 }
