@@ -258,14 +258,14 @@ public class FootballManager2k21{
       Overall[a]=media;
       //Prezzo
       randPrezzi(50, 55,1,3,Overall,Prezzo,a);
-      randPrezzi(55, 60,5,6,Overall,Prezzo,a);
-      randPrezzi(60, 65,6,7,Overall,Prezzo,a);
-      randPrezzi(65, 70,7,10,Overall,Prezzo,a);
+      randPrezzi(55, 60,3,5,Overall,Prezzo,a);
+      randPrezzi(60, 65,6,6,Overall,Prezzo,a);
+      randPrezzi(65, 70,6,9,Overall,Prezzo,a);
       randPrezzi(70, 75,7,10,Overall,Prezzo,a);
-      randPrezzi(75, 80,12,20,Overall,Prezzo,a);
-      randPrezzi(80, 85,20,40,Overall,Prezzo,a);
-      randPrezzi(85, 90,50,50,Overall,Prezzo,a);
-      randPrezzi(90, 99,85,60,Overall,Prezzo,a);
+      randPrezzi(75, 80,12,10,Overall,Prezzo,a);
+      randPrezzi(80, 85,20,8,Overall,Prezzo,a);
+      randPrezzi(85, 90,20,40,Overall,Prezzo,a);
+      randPrezzi(90, 99,40,60,Overall,Prezzo,a);
     }
 
   }
@@ -400,7 +400,7 @@ public class FootballManager2k21{
 
               disponibilita[a-1]= false;
 
-              riempiSquadra(a);
+              riempiSquadra(a-1);
 
             }
             else
@@ -626,7 +626,7 @@ public class FootballManager2k21{
 
     righiDiSpazio(2);
 
-    for (int i=0; i<squadra.length ;i++ ) {
+    for (int i=1; i<squadra.length ;i++ ) {
       int spazi= 50;
 
       overallsquadra += Overall[squadra[i]];
