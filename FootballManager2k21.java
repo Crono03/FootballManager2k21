@@ -114,6 +114,15 @@ public class FootballManager2k21{
 
   }
 
+  public static int giocatoreMinimoPrezzo( int[] Prezzo){
+    int min=300;
+    for (int i=0;i<=(Prezzo.length-1);i++ ) {
+        if(Prezzo[i]<300){
+          min=Prezzo[i];
+        }
+    }
+      return min;
+   }
 
   public static void randPrezzi(int min, int max, int prezzobase, int modifier,int[] Overall, int[]Prezzo, int a){
     if(Overall[a]>=min && Overall[a]<=max){
@@ -396,6 +405,33 @@ public class FootballManager2k21{
 
               budget=budget-Prezzo[a-1];
 
+              if(budget<=giocatoreMinimoPrezzo(Prezzo)){
+                System.out.println("Oh no...");
+                righiDiSpazio(3);
+                dormi(3);
+                System.out.println("Hai inconsciamente speso tutti i soldi");
+                clearScreen();
+                dormi(2);
+                righiDiSpazio(5);
+                System.out.println("la societa' ha deciso di svincolarti");
+                righiDiSpazio(2);
+                dormi(1);
+                System.out.println("il mondo ha dimenticato per sempre il fallimentare nome di "+nomeAllenatore);
+                dormi(2);
+                System.out.println("Pochi mesi dopo la societa "+nomeSquadra+" Con la zelante guida di");
+                righiDiSpazio(1);
+                System.out.println("Michelino Senzanome, la squadra ha vinto la supercoppa del nonno");
+                dormi(2);
+                righiDiSpazio(1);
+                System.out.println("Tu invece hai formato una squadra di e-sport, gli Scugnizz ma anche");
+                righiDiSpazio(1);
+                System.out.println("li le cose non sono andate molto bene, ora sei conosciuto in tutta Italia con il nome di");
+                righiDiSpazio(1);
+                dormi(2);
+                System.out.println("Zeb89");
+                dormi(2);
+                System.exit(0);
+              }
               giocatoriDc[(pagina-1)] = giocatoriDc[(pagina-1)] - 1 ;
 
               disponibilita[a-1]= false;
